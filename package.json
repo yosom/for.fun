@@ -1,0 +1,23 @@
+{
+  "name": "eink-image-processor",
+  "version": "1.0.0",
+  "description": "墨水屏图像处理服务器 - 支持多种抖动算法和调色板",
+  "main": "final_server.js",
+  "scripts": {
+    "start": "node final_server.js"
+  },
+  "dependencies": {
+    "canvas": "^3.1.2",
+    "epdoptimize": "^0.1.2",
+    "jsdom": "^26.1.0",
+    "puppeteer": "^24.15.0"
+  },
+  "keywords": [
+    "eink",
+    "image-processing",
+    "dithering",
+    "epdoptimize"
+  ],
+  "author": "",
+  "license": "MIT"
+}

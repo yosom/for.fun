@@ -1,0 +1,276 @@
+$num-lines: 6;
+$transition-time: 1000ms;
+$anim-time: $num-lines * $transition-time;
+
+@function createArea($delta) {
+  $area: "a#{$delta}";
+  
+  @for $i from 1 to $num-lines {
+    $diff: $i + $delta;
+    
+    @if $diff > $num-lines {
+      $diff: $diff - $num-lines;
+    }
+    $area: append($area, "a#{$diff}");
+  }
+  @return $area;
+}
+
+@property --timer {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --sec {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --msec {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+:root {
+  --gibbgrad: repeating-linear-gradient(90deg,
+    currentColor 0 3ex,
+    #fff0 0 4ex,
+    currentColor 0 5ex,
+    #fff0 0 6ex,
+    currentColor 0 13ex,
+    #fff0 0 14ex,
+    currentColor 0 16ex
+  );
+}
+
+.visually-hidden {
+  position: fixed;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(rgb(6 40 41), rgb(10 10 10));
+  height: 100svh;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+.radar {
+  position: relative;
+  aspect-ratio: 19/13;
+  border: 1px solid #000;
+  background: var(--primary);
+  width: 200px;
+  padding: 0.2rem 0 0.4rem;
+  container-type: size;
+  display: grid;
+  grid-template-rows: auto 1fr 50px;
+  overflow: hidden;
+  
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    transform: translate3d(0,0,0);
+    mix-blend-mode: overlay;
+    
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      inset: 0;
+    }
+    
+    &::before {
+      filter: url(#noiseFilter);
+      transform: translate3d(0,0,0);
+    }
+    
+    &::after {
+      background: rgba(255 255 255 / 0.32);
+      animation: scanlines 7ms linear infinite;
+    }
+  }
+  
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    padding-block: 0cqh 3cqh;
+    font-family: "Tiny5", monospace;
+    
+    &.blink {
+      animation: blink 700ms infinite cubic-bezier(0, 0.55, 0.45, 1);
+    }
+  }
+  
+  h2 {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12cqw;
+    color: var(--primary, #fff);
+    
+    &::after {
+      content: '';
+      display: block;
+      background: var(--gibbgrad);
+      font-size: 6px;
+      height: 1ex;
+      padding: 0 1.2em;
+      margin-inline: -1.2em;
+      width: 100%;
+    }
+  }
+  
+  .kanji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DotGothic16';
+    font-size: 18cqw;
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  
+  .gibberish {
+    display: grid;
+    height: fit-content;
+    font-family: 'Flow Block';
+    font-size: 0.2em;
+    text-align: justify;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    grid-template-areas: createArea(1);
+    grid-template-rows: repeat(var(--num-lines), var(--line-size));
+    animation: 
+      area $anim-time infinite linear,
+      fadeLastLine $transition-time infinite ($transition-time / 2) linear;
+
+    span {
+      @for $i from 1 through $num-lines {
+        &:nth-child(#{$i}) { grid-area: a#{$i}; }
+      }
+    }
+  }
+  
+  .timer {
+    --sec: round(down, var(--timer));
+    --msec: round(down, calc(var(--timer) * 100 - var(--sec) * 100));
+    
+    display: grid;
+    grid-area: "a";
+    place-items: center;
+    justify-self: center;
+    border: 3px solid #000;
+    border-inline-width: 0px;
+    font-family: "Digital-7 Mono";
+    font-size: 20cqw;
+
+    counter-reset: sec var(--sec) msec var(--msec);
+    animation: timer 40s infinite linear;
+
+    &::before, &::after {
+      grid-area: a;
+    }
+    
+    &::before {
+      content: '88.88';
+      opacity: 0.4;
+    }
+    
+    &::after {
+      content: counter(sec, decimal-leading-zero) "." counter(msec, decimal-leading-zero);
+    }
+  }
+}
+
+@keyframes scanlines {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 2px, 0 2px);
+  }
+  
+  to {
+    clip-path: polygon(0 calc(100% - 2px), 100% calc(100% - 2px), 100% 100%, 0 100%);
+  }
+}
+
+@keyframes fadeLastLine {
+  0% {
+    clip-path: polygon(0 0, 0 100%, 0 100%, 0 calc(100% - var(--line-size)), 100% calc(100% - var(--line-size)), 100% 0);
+  }
+
+  100% {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% calc(100% - var(--line-size)), 100% calc(100% - var(--line-size)), 100% 0);
+  }
+}
+
+@keyframes area {
+  @for $o from 1 through $num-lines {
+    $index: $o - 1;
+    $frame: 100 / $num-lines;
+    
+    #{$frame * $index}% {
+      grid-template-areas: createArea($o);
+    }
+  }
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes timer {
+  from {
+    --timer: 99.99;
+  }
+  
+  to {
+    --timer: 00.00;
+  }
+}
+
+.jamming {
+  --primary: rgb(2, 137, 68);
+  --num-lines: 6;
+  --line-size: 8px;
+}
+
+.evasion {
+  --primary: rgb(123, 111, 18);
+  --num-lines: 6;
+  --line-size: 5px;
+}
+
+.alert {
+  --primary: rgb(189, 43, 37);
+  --num-lines: 6;
+  --line-size: 5px;
+}

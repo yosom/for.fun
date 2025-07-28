@@ -1,0 +1,216 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+:root {
+  font-size: min(12vw, 7vh);
+  --clock-size:1.65rem;
+  --clock-gap:0.1rem;
+  --hand-width: 0.1rem;
+  --hand-height: calc((var(--clock-size) / 2) - 0.1rem);
+}
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+   background-color: #e6e3df;
+}
+
+.container{
+  display: flex;
+  gap: var(--clock-gap)
+}
+
+.digit{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--clock-gap);
+  width: calc( (var(--clock-size) * 2) + var(--clock-gap));
+    --a1: 3;
+    --b1: 1;
+    --a2: 3;
+    --b2: 1;
+    --a3: 3;
+    --b3: 1;
+    --a4: 3;
+    --b4: 1;
+    --a5: 3;
+    --b5: 1;
+    --a6: 3;
+    --b6: 1;  
+  &[data-digit="0"]{
+    --a1: 2;
+    --b1: 1;
+    --a2: 2;
+    --b2: 3;
+    --a3: 0;
+    --b3: 2;
+    --a4: 0;
+    --b4: 2;
+    --a5: 0;
+    --b5: 1;
+    --a6: 0;
+    --b6: 3;
+  }
+  
+  &[data-digit="1"]{
+  --a1: 2.6;
+  --b1: 2.6;
+  --a2: 2;
+  --b2: 2;
+  --a3: 2.6;
+  --b3: 2.6;
+  --a4: 0;
+  --b4: 2;
+  --a5: 2.6;
+  --b5: 2.6;
+  --a6: 0;
+  --b6: 0;
+  }
+  &[data-digit="2"]{
+    --a1: 1;
+    --b1: 1;
+    --a2: 2;
+    --b2: 3;
+    --a3: 1;
+    --b3: 2;
+    --a4: 0;
+    --b4: 3;
+    --a5: 0;
+    --b5: 1;
+    --a6: 3;
+    --b6: 3;
+  }
+  &[data-digit="3"]{
+    --a1: 1;
+    --b1: 1;
+    --a2: 2;
+    --b2: 3;
+    --a3: 1;
+    --b3: 1;
+    --a4: 0;
+    --b4: 3;
+    --a5: 1;
+    --b5: 1;
+    --a6: 0;
+    --b6: 3;
+  }  
+  &[data-digit="4"]{
+    --a1: 2;
+    --b1: 2;
+    --a2: 2;
+    --b2: 2;
+    --a3: 0;
+    --b3: 1;
+    --a4: 0;
+    --b4: 2;
+    --a5: 2.6;
+    --b5: 2.6;
+    --a6: 0;
+    --b6: 0;
+  }
+  &[data-digit="5"]{
+    --a1: 1;
+    --b1: 2;
+    --a2: 3;
+    --b2: 3;
+    --a3: 0;
+    --b3: 1;
+    --a4: 3;
+    --b4: 2;
+    --a5: 1;
+    --b5: 1;
+    --a6: 0;
+    --b6: 3;
+  }
+  &[data-digit="6"]{
+    --a1: 1;
+    --b1: 2;
+    --a2: 3;
+    --b2: 3;
+    --a3: 0;
+    --b3: 2;
+    --a4: 3;
+    --b4: 2;
+    --a5: 0;
+    --b5: 1;
+    --a6: 0;
+    --b6: 3;
+  }
+  &[data-digit="7"]{
+      --a1: 1;
+    --b1: 1;
+    --a2: 3;
+    --b2: 2;
+    --a3: 2.6;
+    --b3: 2.6;
+    --a4: 0;
+    --b4: 2;
+    --a5: 2.6;
+    --b5: 2.6;
+    --a6: 0;
+    --b6: 0;
+  }
+  &[data-digit="8"]{
+    --a1: 2;
+    --b1: 1;
+    --a2: 2;
+    --b2: 3;
+    --a3: 2;
+    --b3: 1;
+    --a4: 2;
+    --b4: 3;
+    --a5: 0;
+    --b5: 1;
+    --a6: 0;
+    --b6: 3;
+  }
+  &[data-digit="9"]{
+    --a1: 2;
+    --b1: 1;
+    --a2: 2;
+    --b2: 3;
+    --a3: 0;
+    --b3: 1;
+    --a4: 0;
+    --b4: 2;
+    --a5: 1;
+    --b5: 1;
+    --a6: 0;
+    --b6: 3;
+  }
+}
+
+.clock {
+  width: var(--clock-size);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5),
+    1px 1px 5px #FFF;
+  position: relative;
+  font-size: 12px;
+  color: red;
+  @for $i from 1 through 6 {
+    &:nth-child(3n + #{$i}) {
+      &:after{
+        transform: rotate(calc(var(--a#{$i}) * 90deg))
+      }
+      &:before {
+        transform: rotate(calc(var(--b#{$i}) * 90deg))
+      }
+    }
+  }
+  
+  
+  &:after , &:before {
+    content: '';
+    background: #000;
+    position: absolute;
+    width: var(--hand-width);
+    height: var(--hand-height);
+    left: calc(50% - (var(--hand-width)/2));
+    top: var(--hand-width);
+    transform-origin: center bottom;
+    transition: 0.3s linear;
+  }
+}

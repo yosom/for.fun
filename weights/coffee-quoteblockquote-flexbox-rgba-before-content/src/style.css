@@ -1,0 +1,53 @@
+body::before {
+   content: "&";
+   font-size: 150vh;
+   color: rgba(0, 0, 0, 0.1);
+   position: absolute;
+   top: -35vh;
+}
+
+body {
+   height: 100vh;
+   overflow: hidden;
+   background-image: radial-gradient(
+      farthest-corner at 40px 40px,
+      rgba(70, 40, 25, 0.7) 0%,
+      rgba(70, 40, 25, 1) 100%
+   );
+   display: flex;
+   align-items: center;
+}
+
+blockquote {
+   color: rgba(250, 200, 130, 0.6);
+   font-family: Tahoma, sans-serif;
+   font-size: 40px;
+   width: 60%;
+   margin: 0 auto;
+}
+blockquote h1 {
+   font-size: 4rem;
+}
+blockquote p {
+   font-style: italic;
+   margin-bottom: 0;
+}
+
+blockquote p::before,
+blockquote p::after {
+   content: "“";
+   font-family: Georgia;
+   font-size: 8rem;
+   margin: -2rem 0 0 -4rem;
+   position: absolute;
+   opacity: 0.5;
+}
+
+blockquote p::after {
+   content: "”";
+   margin: -1rem -4rem 0 0;
+}
+
+blockquote cite {
+   font-size: 1.5rem;
+}

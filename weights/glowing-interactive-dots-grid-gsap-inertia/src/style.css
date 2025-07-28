@@ -1,0 +1,111 @@
+/* ------- Osmo [https://osmo.supply/] ------- */
+/* Osmo UI: https://slater.app/10324/23333.css */
+
+body {
+  background-color: #08342a;
+  color: var(--color-light);
+  font-size: 1vw;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  min-height: 100%;
+  cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b239d7aeb290a31ac5_cursor-default%402x.svg")
+      2 0,
+    auto;
+}
+
+a,
+button {
+  cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b212e6b71494aa67ff_cursor-pointer%402x.svg")
+      12 0,
+    pointer;
+}
+
+.section-resource {
+  padding: 4em;
+  justify-content: center;
+  align-items: center;
+  height: 100svh;
+  display: flex;
+  position: relative;
+}
+
+.osmo-icon__link {
+  color: currentColor;
+  text-decoration: none;
+  position: absolute;
+}
+
+.osmo-icon-svg {
+  width: 10em;
+}
+
+.dots-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.dots-container {
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  pointer-events: none;
+  flex-flow: wrap;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  inset: 0em;
+}
+
+.dot {
+  will-change: transform, background-color;
+  transform-origin: center;
+  background-color: #245e51;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  transform: translate(0);
+}
+
+.osmo-credits {
+  z-index: 999;
+  pointer-events: none;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 4em;
+  padding: 1em;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.osmo-credits__p {
+  pointer-events: auto;
+  color: #efeeec80;
+  text-align: center;
+  margin: 0;
+  font-family: PP Neue Montreal, Arial, sans-serif;
+  font-size: 1.125em;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.osmo-credits__p-a {
+  color: #efeeec;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('https://cdn.prod.website-files.com/6819ed8312518f61b84824df/6819ed8312518f61b84825ba_PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

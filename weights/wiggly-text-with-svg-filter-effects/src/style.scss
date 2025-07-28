@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+body {
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.demo {
+  flex-grow: 1;
+  max-width: 900px;
+}
+
+.container {
+  container-type: inline-size;
+  display: grid;
+}
+
+.title {
+  --shadow: 2px 2px 0 black;
+  color: rgb(107 95 232);
+  filter: url("#title-wiggle");
+  font-family: "titan one";
+  font-size: 15cqw;
+  font-weight: 400;
+  line-height: 0.8;
+  text-wrap: pretty;
+  text-shadow: 0px -3px 0 oklch(0.66 0.2 283.35), var(--shadow);
+  will-change: filter;
+
+  &::first-line {
+    color: #fd40c0;
+    text-shadow: 0px -3px 0 oklch(0.78 0.22 342.82), var(--shadow);
+  }
+}
+
+.controls {
+  background-color: oklch(94.3% 0.029 294.588);
+  border-radius: 12px;
+  column-gap: 16px;
+  display: grid;
+  margin-top: 40px;
+  padding: 24px;
+  row-gap: 24px;
+
+  @media (width >= 600px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.control {
+  display: grid;
+  row-gap: 8px;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.label {
+  font-weight: 600;
+}
+
+input[type="range"] {
+  accent-color: rgb(107 95 232);
+  appearance: none;
+  background: oklch(0.79 0.09 288.24);
+  height: 8px;
+  border-radius: 999px;
+}

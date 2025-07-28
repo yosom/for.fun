@@ -1,0 +1,115 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 223;
+	--sat: 10%;
+	--white: hsl(0, 0%, 100%);
+	--gray100: hsl(var(--hue), var(--sat), 90%);
+	--gray150: hsl(var(--hue), var(--sat), 85%);
+	--gray200: hsl(var(--hue), var(--sat), 80%);
+	--gray250: hsl(var(--hue), var(--sat), 75%);
+	--gray300: hsl(var(--hue), var(--sat), 70%);
+	--gray350: hsl(var(--hue), var(--sat), 65%);
+	--gray400: hsl(var(--hue), var(--sat), 60%);
+	--gray450: hsl(var(--hue), var(--sat), 55%);
+	--gray500: hsl(var(--hue), var(--sat), 50%);
+	--gray550: hsl(var(--hue), var(--sat), 45%);
+	--gray600: hsl(var(--hue), var(--sat), 40%);
+	--gray650: hsl(var(--hue), var(--sat), 35%);
+	--gray700: hsl(var(--hue), var(--sat), 30%);
+	--gray750: hsl(var(--hue), var(--sat), 25%);
+	--gray800: hsl(var(--hue), var(--sat), 20%);
+	--gray850: hsl(var(--hue), var(--sat), 15%);
+	--gray900: hsl(var(--hue), var(--sat), 10%);
+	--danger350: hsl(355, 96%, 65%);
+	--danger450: hsl(355, 96%, 55%);
+	--trans-dur: 0.3s;
+	--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+	color-scheme: light dark;
+	font-size: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+}
+body,
+button {
+	color: light-dark(var(--gray900), var(--gray100));
+	font: 1em / 1.5 "JetBrains Mono", monospace;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
+}
+body,
+main {
+	display: grid;
+	place-items: center;
+}
+body {
+	background-color: light-dark(var(--gray100), var(--gray900));
+	height: 100vh;
+	overflow-x: hidden;
+}
+main {
+	padding: 1.5em;
+	width: 100vw;
+}
+.widget {
+	background-color: light-dark(var(--white), var(--gray800));
+	border: 1px solid light-dark(var(--gray150), var(--gray650));
+	border-radius: 2.25em;
+	padding: 2.25em;
+	width: 100%;
+	max-width: 33em;
+	transition:
+		background-color var(--trans-dur),
+		border-color var(--trans-dur);
+
+	&__button {
+		background-color: transparent;
+		cursor: pointer;
+		display: block;
+		text-transform: uppercase;
+		appearance: none;
+		-webkit-tap-highlight-color: transparent;
+
+		&[aria-pressed="false"] {
+			color: light-dark(var(--gray550), var(--gray350));
+
+			&:hover {
+				color: light-dark(var(--gray650), var(--gray250));
+			}
+		}
+	}
+	&__diff {
+		margin-inline-start: auto;
+	}
+	&__graph {
+		display: block;
+		width: 100%;
+		height: auto;
+
+		line {
+			transition:
+				stroke var(--trans-dur),
+				stroke-dashoffset 0.75s;
+		}
+		text {
+			transition: fill var(--trans-dur);
+		}
+	}
+	&__header {
+		display: flex;
+		height: 1em;
+		gap: 0.833em;
+		align-items: center;
+		margin-bottom: 2.25em;
+	}
+	&__sr-only {
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+		height: 1px;
+	}
+}

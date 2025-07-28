@@ -1,0 +1,398 @@
+$red: #f83800;
+$green: #af7f00;
+$orange: #ffa347;
+$size: 5px;
+$stand: 
+		1em 0em 0em 0em $red,
+		2em 0em 0em 0em $red,
+		3em 0em 0em 0em $red,
+		4em 0em 0em 0em $red,
+		5em 0em 0em 0em $red,
+		0em 1em 0em 0em $red,
+		1em 1em 0em 0em $red,
+		2em 1em 0em 0em $red,
+		3em 1em 0em 0em $red,
+		4em 1em 0em 0em $red,
+		5em 1em 0em 0em $red,
+		6em 1em 0em 0em $red,
+		7em 1em 0em 0em $red,
+		8em 1em 0em 0em $red,
+		0em 2em 0em 0em $green,
+		1em 2em 0em 0em $green,
+		2em 2em 0em 0em $green,
+		3em 2em 0em 0em $orange,
+		4em 2em 0em 0em $orange,
+		5em 2em 0em 0em $green,
+		6em 2em 0em 0em $orange,
+		-1em 3em 0em 0em $green,
+		0em 3em 0em 0em $orange,
+		1em 3em 0em 0em $green,
+		2em 3em 0em 0em $orange,
+		3em 3em 0em 0em $orange,
+		4em 3em 0em 0em $orange,
+		5em 3em 0em 0em $green,
+		6em 3em 0em 0em $orange,
+		7em 3em 0em 0em $orange,
+		8em 3em 0em 0em $orange,
+		-1em 4em 0em 0em $green,
+		0em 4em 0em 0em $orange,
+		1em 4em 0em 0em $green,
+		2em 4em 0em 0em $green,
+		3em 4em 0em 0em $orange,
+		4em 4em 0em 0em $orange,
+		5em 4em 0em 0em $orange,
+		6em 4em 0em 0em $green,
+		7em 4em 0em 0em $orange,
+		8em 4em 0em 0em $orange,
+		9em 4em 0em 0em $orange,
+		-1em 5em 0em 0em $green,
+		0em 5em 0em 0em $green,
+		1em 5em 0em 0em $orange,
+		2em 5em 0em 0em $orange,
+		3em 5em 0em 0em $orange,
+		4em 5em 0em 0em $orange,
+		5em 5em 0em 0em $green,
+		6em 5em 0em 0em $green,
+		7em 5em 0em 0em $green,
+		8em 5em 0em 0em $green,
+		1em 6em 0em 0em $orange,
+		2em 6em 0em 0em $orange,
+		3em 6em 0em 0em $orange,
+		4em 6em 0em 0em $orange,
+		5em 6em 0em 0em $orange,
+		6em 6em 0em 0em $orange,
+		7em 6em 0em 0em $orange,
+		0em 7em 0em 0em $green,
+		1em 7em 0em 0em $green,
+		2em 7em 0em 0em $red,
+		3em 7em 0em 0em $green,
+		4em 7em 0em 0em $green,
+		5em 7em 0em 0em $green,
+		-1em 8em 0em 0em $green,
+		0em 8em 0em 0em $green,
+		1em 8em 0em 0em $green,
+		2em 8em 0em 0em $red,
+		3em 8em 0em 0em $green,
+		4em 8em 0em 0em $green,
+		5em 8em 0em 0em $red,
+		6em 8em 0em 0em $green,
+		7em 8em 0em 0em $green,
+		8em 8em 0em 0em $green,
+		-2em 9em 0em 0em $green,
+		-1em 9em 0em 0em $green,
+		0em 9em 0em 0em $green,
+		1em 9em 0em 0em $green,
+		2em 9em 0em 0em $red,
+		3em 9em 0em 0em $red,
+		4em 9em 0em 0em $red,
+		5em 9em 0em 0em $red,
+		6em 9em 0em 0em $green,
+		7em 9em 0em 0em $green,
+		8em 9em 0em 0em $green,
+		9em 9em 0em 0em $green,
+		-2em 10em 0em 0em $orange,
+		-1em 10em 0em 0em $orange,
+		0em 10em 0em 0em $green,
+		1em 10em 0em 0em $red,
+		2em 10em 0em 0em $orange,
+		3em 10em 0em 0em $red,
+		4em 10em 0em 0em $red,
+		5em 10em 0em 0em $orange,
+		6em 10em 0em 0em $red,
+		7em 10em 0em 0em $green,
+		8em 10em 0em 0em $orange,
+		9em 10em 0em 0em $orange,
+		-2em 11em 0em 0em $orange,
+		-1em 11em 0em 0em $orange,
+		0em 11em 0em 0em $orange,
+		1em 11em 0em 0em $red,
+		2em 11em 0em 0em $red,
+		3em 11em 0em 0em $red,
+		4em 11em 0em 0em $red,
+		5em 11em 0em 0em $red,
+		6em 11em 0em 0em $red,
+		7em 11em 0em 0em $orange,
+		8em 11em 0em 0em $orange,
+		9em 11em 0em 0em $orange,
+		-2em 12em 0em 0em $orange,
+		-1em 12em 0em 0em $orange,
+		0em 12em 0em 0em $red,
+		1em 12em 0em 0em $red,
+		2em 12em 0em 0em $red,
+		3em 12em 0em 0em $red,
+		4em 12em 0em 0em $red,
+		5em 12em 0em 0em $red,
+		6em 12em 0em 0em $red,
+		7em 12em 0em 0em $red,
+		8em 12em 0em 0em $orange,
+		9em 12em 0em 0em $orange,
+		0em 13em 0em 0em $red,
+		1em 13em 0em 0em $red,
+		2em 13em 0em 0em $red,
+		5em 13em 0em 0em $red,
+		6em 13em 0em 0em $red,
+		7em 13em 0em 0em $red,
+		-1em 14em 0em 0em $green,
+		0em 14em 0em 0em $green,
+		1em 14em 0em 0em $green,
+		6em 14em 0em 0em $green,
+		7em 14em 0em 0em $green,
+		8em 14em 0em 0em $green,
+		-2em 15em 0em 0em $green,
+		-1em 15em 0em 0em $green,
+		0em 15em 0em 0em $green,
+		1em 15em 0em 0em $green,
+		6em 15em 0em 0em $green,
+		7em 15em 0em 0em $green,
+		8em 15em 0em 0em $green,
+		9em 15em 0em 0em $green;
+		
+$jump: 
+		8em -1em 0em 0em $orange,
+		9em -1em 0em 0em $orange,
+		10em -1em 0em 0em $orange,
+		1em 0em 0em 0em $red,
+		2em 0em 0em 0em $red,
+		3em 0em 0em 0em $red,
+		4em 0em 0em 0em $red,
+		5em 0em 0em 0em $red,
+		8em 0em 0em 0em $orange,
+		9em 0em 0em 0em $orange,
+		10em 0em 0em 0em $orange,
+		0em 1em 0em 0em $red,
+		1em 1em 0em 0em $red,
+		2em 1em 0em 0em $red,
+		3em 1em 0em 0em $red,
+		4em 1em 0em 0em $red,
+		5em 1em 0em 0em $red,
+		6em 1em 0em 0em $red,
+		7em 1em 0em 0em $red,
+		8em 1em 0em 0em $red,
+		9em 1em 0em 0em $orange,
+		10em 1em 0em 0em $orange,
+		0em 2em 0em 0em $green,
+		1em 2em 0em 0em $green,
+		2em 2em 0em 0em $green,
+		3em 2em 0em 0em $orange,
+		4em 2em 0em 0em $orange,
+		5em 2em 0em 0em $green,
+		6em 2em 0em 0em $orange,
+		8em 2em 0em 0em $green,
+		9em 2em 0em 0em $green,
+		10em 2em 0em 0em $green,
+		-1em 3em 0em 0em $green,
+		0em 3em 0em 0em $orange,
+		1em 3em 0em 0em $green,
+		2em 3em 0em 0em $orange,
+		3em 3em 0em 0em $orange,
+		4em 3em 0em 0em $orange,
+		5em 3em 0em 0em $green,
+		6em 3em 0em 0em $orange,
+		7em 3em 0em 0em $orange,
+		8em 3em 0em 0em $orange,
+		9em 3em 0em 0em $green,
+		10em 3em 0em 0em $green,
+		-1em 4em 0em 0em $green,
+		0em 4em 0em 0em $orange,
+		1em 4em 0em 0em $green,
+		2em 4em 0em 0em $green,
+		3em 4em 0em 0em $orange,
+		4em 4em 0em 0em $orange,
+		5em 4em 0em 0em $orange,
+		6em 4em 0em 0em $green,
+		7em 4em 0em 0em $orange,
+		8em 4em 0em 0em $orange,
+		9em 4em 0em 0em $orange,
+		10em 4em 0em 0em $green,
+		-1em 5em 0em 0em $green,
+		0em 5em 0em 0em $green,
+		1em 5em 0em 0em $orange,
+		2em 5em 0em 0em $orange,
+		3em 5em 0em 0em $orange,
+		4em 5em 0em 0em $orange,
+		5em 5em 0em 0em $green,
+		6em 5em 0em 0em $green,
+		7em 5em 0em 0em $green,
+		8em 5em 0em 0em $green,
+		9em 5em 0em 0em $green,
+		1em 6em 0em 0em $orange,
+		2em 6em 0em 0em $orange,
+		3em 6em 0em 0em $orange,
+		4em 6em 0em 0em $orange,
+		5em 6em 0em 0em $orange,
+		6em 6em 0em 0em $orange,
+		7em 6em 0em 0em $orange,
+		8em 6em 0em 0em $green,
+		-3em 7em 0em 0em $green,
+		-2em 7em 0em 0em $green,
+		-1em 7em 0em 0em $green,
+		0em 7em 0em 0em $green,
+		1em 7em 0em 0em $green,
+		2em 7em 0em 0em $red,
+		3em 7em 0em 0em $green,
+		4em 7em 0em 0em $green,
+		5em 7em 0em 0em $green,
+		6em 7em 0em 0em $red,
+		7em 7em 0em 0em $green,
+		-4em 8em 0em 0em $green,
+		-3em 8em 0em 0em $green,
+		-2em 8em 0em 0em $green,
+		-1em 8em 0em 0em $green,
+		0em 8em 0em 0em $green,
+		1em 8em 0em 0em $green,
+		2em 8em 0em 0em $green,
+		3em 8em 0em 0em $red,
+		4em 8em 0em 0em $green,
+		5em 8em 0em 0em $green,
+		6em 8em 0em 0em $green,
+		7em 8em 0em 0em $red,
+		10em 8em 0em 0em $green,
+		-5em 9em 0em 0em $orange,
+		-4em 9em 0em 0em $orange,
+		-3em 9em 0em 0em $green,
+		-2em 9em 0em 0em $green,
+		-1em 9em 0em 0em $green,
+		0em 9em 0em 0em $green,
+		1em 9em 0em 0em $green,
+		2em 9em 0em 0em $green,
+		3em 9em 0em 0em $red,
+		4em 9em 0em 0em $red,
+		5em 9em 0em 0em $red,
+		6em 9em 0em 0em $red,
+		7em 9em 0em 0em $red,
+		10em 9em 0em 0em $green,
+		-5em 10em 0em 0em $orange,
+		-4em 10em 0em 0em $orange,
+		-3em 10em 0em 0em $orange,
+		-1em 10em 0em 0em $red,
+		0em 10em 0em 0em $red,
+		1em 10em 0em 0em $green,
+		2em 10em 0em 0em $red,
+		3em 10em 0em 0em $red,
+		4em 10em 0em 0em $orange,
+		5em 10em 0em 0em $red,
+		6em 10em 0em 0em $red,
+		7em 10em 0em 0em $orange,
+		8em 10em 0em 0em $red,
+		9em 10em 0em 0em $green,
+		10em 10em 0em 0em $green,
+		-4em 11em 0em 0em $orange,
+		-2em 11em 0em 0em $green,
+		-1em 11em 0em 0em $red,
+		0em 11em 0em 0em $red,
+		1em 11em 0em 0em $red,
+		2em 11em 0em 0em $red,
+		3em 11em 0em 0em $red,
+		4em 11em 0em 0em $red,
+		5em 11em 0em 0em $red,
+		6em 11em 0em 0em $red,
+		7em 11em 0em 0em $red,
+		8em 11em 0em 0em $red,
+		9em 11em 0em 0em $green,
+		10em 11em 0em 0em $green,
+		-3em 12em 0em 0em $green,
+		-2em 12em 0em 0em $green,
+		-1em 12em 0em 0em $green,
+		0em 12em 0em 0em $red,
+		1em 12em 0em 0em $red,
+		2em 12em 0em 0em $red,
+		3em 12em 0em 0em $red,
+		4em 12em 0em 0em $red,
+		5em 12em 0em 0em $red,
+		6em 12em 0em 0em $red,
+		7em 12em 0em 0em $red,
+		8em 12em 0em 0em $red,
+		9em 12em 0em 0em $green,
+		10em 12em 0em 0em $green,
+		-4em 13em 0em 0em $green,
+		-3em 13em 0em 0em $green,
+		-2em 13em 0em 0em $green,
+		-1em 13em 0em 0em $red,
+		0em 13em 0em 0em $red,
+		1em 13em 0em 0em $red,
+		2em 13em 0em 0em $red,
+		3em 13em 0em 0em $red,
+		4em 13em 0em 0em $red,
+		5em 13em 0em 0em $red,
+		-4em 14em 0em 0em $green,
+		-1em 14em 0em 0em $red,
+		0em 14em 0em 0em $red,
+		1em 14em 0em 0em $red,
+		2em 14em 0em 0em $red,
+		3em 14em 0em 0em $red;
+		
+@mixin box-shadow($shadow) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+@mixin jump() {
+	0% {
+		@include box-shadow($jump);
+		bottom: 15em;
+	}
+	10% {
+		@include box-shadow($jump);
+		bottom: 42em;
+	}
+	20% {
+		@include box-shadow($jump);
+		bottom: 15em;
+	}
+	21% {
+		@include box-shadow($stand);
+		bottom: 15em;
+	}
+}
+
+@mixin jump-animation($c:2.5s infinite linear) {
+	-webkit-animation: jump $c;
+	-moz-animation: jump $c;
+	-o-animation: jump $c;
+	-ms-animation: jump $c;
+	animation: jump $c;
+}
+
+@mixin bg-gradient($from:#86b5fc,$to:#e0dfe4) {
+	background: $from;
+	background: -webkit-linear-gradient(top, $from 0%,$to 100%);
+	background: -moz-linear-gradient(top, $from 0%, $to 100%);
+	background: -o-linear-gradient(top, $from 0%,$to 100%);
+	background: -ms-linear-gradient(top, $from 0%,$to 100%);
+	background: linear-gradient(to bottom, $from 0%,$to 100%);
+}
+
+body, html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: $size;
+	@include bg-gradient();
+}
+
+.mario {
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	left: 50%;
+	margin-left: -2em;
+	bottom: 15em;
+	@include box-shadow($stand);
+	@include jump-animation();
+}
+
+@-webkit-keyframes jump {
+	@include jump();
+}
+
+@-moz-keyframes jump {
+	@include jump();
+}
+
+@keyframes jump {
+	@include jump();
+}

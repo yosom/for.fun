@@ -1,0 +1,206 @@
+$s: 10px;
+$green: #7AC000;
+$skin: #D68511;
+$brown: #703500;
+
+body {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: lightgray;
+}
+
+.link {
+  margin: auto;
+  position: relative;
+  left: $s* -8;
+  top: $s* -8;
+  width: $s;
+  height: $s;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: $s;
+    height: $s;
+    box-shadow: 
+      $s*5 $s $green,
+      $s*6 $s $green,
+      $s*7 $s $green,
+      $s*8 $s $green,
+      $s*9 $s $green,
+      $s*10 $s $green,
+      
+      $s*4 $s*2 $green,
+      $s*5 $s*2 $green,
+      $s*6 $s*2 $green,
+      $s*7 $s*2 $green,
+      $s*8 $s*2 $green,
+      $s*9 $s*2 $green,
+      $s*10 $s*2 $green,
+      $s*11 $s*2 $green,
+      
+      $s*2 $s*3 $skin,
+      $s*4 $s*3 $green,
+      $s*5 $s*3 $brown,
+      $s*6 $s*3 $brown,
+      $s*7 $s*3 $brown,
+      $s*8 $s*3 $brown,
+      $s*9 $s*3 $brown,
+      $s*10 $s*3 $brown,
+      $s*11 $s*3 $green,
+      $s*13 $s*3 $skin,
+      
+      $s*2 $s*4 $skin,
+      $s*4 $s*4 $brown,
+      $s*5 $s*4 $brown,
+      $s*6 $s*4 $brown,
+      $s*7 $s*4 $brown,
+      $s*8 $s*4 $brown,
+      $s*9 $s*4 $brown,
+      $s*10 $s*4 $brown,
+      $s*11 $s*4 $brown,
+      $s*13 $s*4 $skin,
+      
+      $s*2 $s*5 $skin,
+      $s*3 $s*5 $skin,
+      $s*4 $s*5 $brown,
+      $s*5 $s*5 $skin,
+      $s*6 $s*5 $green,
+      $s*7 $s*5 $skin,
+      $s*8 $s*5 $skin,
+      $s*9 $s*5 $green,
+      $s*10 $s*5 $skin,
+      $s*11 $s*5 $brown,
+      $s*12 $s*5 $skin,
+      $s*13 $s*5 $skin,
+      
+      $s*2 $s*6 $skin,
+      $s*3 $s*6 $skin,
+      $s*4 $s*6 $brown,
+      $s*5 $s*6 $skin,
+      $s*6 $s*6 $brown,
+      $s*7 $s*6 $skin,
+      $s*8 $s*6 $skin,
+      $s*9 $s*6 $brown,
+      $s*10 $s*6 $skin,
+      $s*11 $s*6 $brown,
+      $s*12 $s*6 $skin,
+      $s*13 $s*6 $skin,
+      
+      $s*3 $s*7 $skin,
+      $s*4 $s*7 $skin,
+      $s*5 $s*7 $skin,
+      $s*6 $s*7 $skin,
+      $s*7 $s*7 $skin,
+      $s*8 $s*7 $skin,
+      $s*9 $s*7 $skin,
+      $s*10 $s*7 $skin,
+      $s*11 $s*7 $skin,
+      $s*12 $s*7 $skin,
+      $s*13 $s*7 $brown,
+      
+      $s*4 $s*8 $green,
+      $s*5 $s*8 $skin,
+      $s*6 $s*8 $skin,
+      $s*7 $s*8 $brown,
+      $s*8 $s*8 $brown,
+      $s*9 $s*8 $skin,
+      $s*10 $s*8 $skin,
+      $s*11 $s*8 $green,
+      $s*12 $s*8 $brown,
+      $s*13 $s*8 $brown,
+      
+      $s*2 $s*9 $brown,
+      $s*3 $s*9 $brown,
+      $s*4 $s*9 $brown,
+      $s*5 $s*9 $brown,
+      $s*6 $s*9 $brown,
+      $s*7 $s*9 $skin,
+      $s*8 $s*9 $skin,
+      $s*9 $s*9 $skin,
+      $s*10 $s*9 $green,
+      $s*11 $s*9 $green,
+      $s*12 $s*9 $green,
+      $s*13 $s*9 $skin,
+      
+      $s*1 $s*10 $brown,
+      $s*2 $s*10 $brown,
+      $s*3 $s*10 $skin,
+      $s*4 $s*10 $brown,
+      $s*5 $s*10 $brown,
+      $s*6 $s*10 $brown,
+      $s*7 $s*10 $brown,
+      $s*8 $s*10 $green,
+      $s*9 $s*10 $green,
+      $s*10 $s*10 $green,
+      $s*11 $s*10 $green,
+      $s*12 $s*10 $green,
+      $s*13 $s*10 $skin,
+      
+      $s*1 $s*11 $brown,
+      $s*2 $s*11 $skin,
+      $s*3 $s*11 $skin,
+      $s*4 $s*11 $skin,
+      $s*5 $s*11 $brown,
+      $s*6 $s*11 $brown,
+      $s*7 $s*11 $skin,
+      $s*8 $s*11 $brown,
+      $s*9 $s*11 $brown,
+      $s*10 $s*11 $green,
+      $s*11 $s*11 $green,
+      $s*12 $s*11 $brown,
+      
+      $s*1 $s*12 $brown,
+      $s*2 $s*12 $brown,
+      $s*3 $s*12 $skin,
+      $s*4 $s*12 $brown,
+      $s*5 $s*12 $brown,
+      $s*6 $s*12 $brown,
+      $s*7 $s*12 $skin,
+      $s*8 $s*12 $green,
+      $s*9 $s*12 $brown,
+      $s*10 $s*12 $brown,
+      $s*11 $s*12 $brown,
+      $s*12 $s*12 $green,
+      
+      $s*1 $s*13 $brown,
+      $s*2 $s*13 $brown,
+      $s*3 $s*13 $skin,
+      $s*4 $s*13 $brown,
+      $s*5 $s*13 $brown,
+      $s*6 $s*13 $brown,
+      $s*7 $s*13 $skin,
+      $s*8 $s*13 $brown,
+      $s*9 $s*13 $brown,
+      $s*10 $s*13 $green,
+      $s*11 $s*13 $green,
+      $s*12 $s*13 $green,
+      
+      $s*1 $s*14 $brown,
+      $s*2 $s*14 $brown,
+      $s*3 $s*14 $brown,
+      $s*4 $s*14 $brown,
+      $s*5 $s*14 $brown,
+      $s*6 $s*14 $brown,
+      $s*7 $s*14 $skin,
+      $s*8 $s*14 $green,
+      $s*9 $s*14 $green,
+      $s*10 $s*14 $green,
+      $s*11 $s*14 $brown,
+      
+      $s*2 $s*15 $skin,
+      $s*3 $s*15 $skin,
+      $s*4 $s*15 $skin,
+      $s*5 $s*15 $skin,
+      $s*6 $s*15 $skin,
+      $s*9 $s*15 $brown,
+      $s*10 $s*15 $brown,
+      $s*11 $s*15 $brown,
+      
+      $s*9 $s*16 $brown,
+      $s*10 $s*16 $brown,
+      $s*11 $s*16 $brown,
+    ;
+  }
+}

@@ -1,0 +1,106 @@
+<canvas id="canvas"></canvas>
+<!-- VertexShader code here -->
+<script id="vertexShader" type="x-shader/x-vertex">#version 300 es
+precision highp float;
+  in vec4 position;
+  void main() {
+    gl_Position = vec4( position );
+  }
+</script>
+
+<!-- FragmentShader code here -->
+<script id="fragmentShader" type="x-shader/x-fragment">#version 300 es
+#if __VERSION__ < 130
+#define TEXTURE2D texture2D
+#else
+#define TEXTURE2D texture
+#endif
+precision highp float;
+out vec4 fragColor;
+uniform vec2 u_resolution;
+uniform vec4 u_mouse;
+uniform float u_time;
+uniform sampler2D iChannel0;
+uniform sampler2D iChannel1;
+  
+#define R   u_resolution
+#define T   u_time
+#define M   u_mouse
+
+#define PI  3.1415926
+
+float seed = 11.32;
+
+float hash21(vec2 a) { 
+    return fract(sin(dot(a, vec2(27.69, 32.53)+seed))*437.53); 
+}
+
+vec3 hue(float t) { 
+    vec3 c = vec3(.95,.93,.89),
+         d = vec3(.95,.61,.23);
+    return vec3(.35) + vec3(.25)*cos( PI*(c*t+d) ); 
+}
+
+void main( )
+{ 
+    vec2 F = gl_FragCoord.xy;
+    seed = 11.32+floor(T*.2);
+    vec2 uv = F.xy/max(R.x,R.y), nv = uv;
+
+    vec3 C = vec3(.075);
+
+    // enlarge scale for bigger screen
+    float scale = R.x>1200. ? 7.9 : 5.9; 
+
+    float px = fwidth(uv.x*scale);
+    vec2 id = floor(uv*scale), p = fract(uv*scale)-.5;
+
+    float hs = hash21(id);   
+    float tk = .0035, mx = .0095, fx = 184.;
+
+    if(hs>.73) {
+        scale *=2., tk *=2., mx *=2.;
+        fx /= 2.;
+        id = floor(uv*scale), p = fract(uv*scale)-.5;
+        hs = hash21(id);
+
+        if(fract(hs*43.71)>.85) {
+            scale *=2., tk *=2., mx *=2.;
+            fx /= 2.;
+            id = floor(uv*scale), p = fract(uv*scale)-.5;
+            hs = hash21(id);
+        }
+    }
+
+    float rnd = fract(hs*37.32);
+    if(rnd>.5) p.x=-p.x;
+    if(rnd>.75 || rnd<.25) p.y=-p.y;
+
+    rnd = fract(hs*32.27);
+
+    vec3 H = rnd>.65 ? hue((T*.05)+(hs*1.23)+rnd) : vec3(1);
+    float d = p.x+p.y, f = p.x-p.y; 
+    
+    float t = fract(hs*32.27)>.65 ? (f+1.15)*1.5 : (p.y+.15)*1.75;
+    
+    vec3 k = mix(C,vec3(1),clamp(t,0.,1.));
+    // add shadow and colors
+    C = mix(C,k,smoothstep(px,-px,f));
+    C = mix(C,H,smoothstep(px,-px,d));
+    
+    // stiching
+    if(fract(hs*47.32)>.425) {
+        float b = (p.y+mx)+(p.x+mx);
+        float v = max(length(b)-tk, .5+10.*sin((p.y-p.x)*fx));
+        C = mix(C,C*vec3(.35),smoothstep(px,-px,v));
+    }
+
+    // static effect
+    nv = floor(nv*(160.*R.x/R.y))/(160.*R.x/R.y);
+    C = mix(C,clamp(C-.03,vec3(0),C),hash21(nv+id+uv));
+
+    // Output to screen
+    fragColor = vec4(pow(C, vec3(.4545)),1);
+}
+
+</script>

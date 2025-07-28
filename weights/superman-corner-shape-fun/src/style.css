@@ -1,0 +1,45 @@
+html {
+  --color-blue: #0266b0;
+  --color-red: #ee1a2e;
+  --color-yellow: #ffdf1d;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  background: var(--color-blue);
+}
+
+.emblem {
+  --small-bevel: .4em;
+  --line-width: 0.05em;
+  overflow: clip;
+  background: var(--color-yellow);
+  padding: .02em .1em .2em; /* Fine-tuning alignment */
+  
+  /* Fancy bevel corners */
+  corner-shape: bevel;
+  border-top-left-radius: var(--small-bevel);
+  border-top-right-radius: var(--small-bevel);
+  border-bottom-left-radius: 100% calc(200% - var(--small-bevel));
+  border-bottom-right-radius: 100% calc(200% - var(--small-bevel));
+  border: var(--line-width) solid black;
+  
+  /* A very super font */
+  font-family: "Kalnia", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 125;
+  
+  /* Text sizing + color  */
+  text-box: trim-both cap alphabetic;
+  font-size: min(50vi, 70vb);
+  color: var(--color-red);
+  
+  /* Gently stroke the text 🐕 */
+  text-stroke: calc(var(--line-width) * 2) black;
+  paint-order: stroke fill;
+}

@@ -1,0 +1,228 @@
+@import "nib"
+
+/* **************
+   Quick Reset
+************** */
+html
+  box-sizing border-box
+html
+body
+  margin 0
+  padding 0
+  height 100%
+  overflow hidden
+body
+  background #2D2D2E
+  display flex
+  justify-content center
+  align-items center
+*
+*:before
+*:after
+  box-sizing inherit
+
+/* **************
+   Variables
+************** */
+// Width & Height
+basys = 3vmin
+
+// Colors
+colorBlue        = #129FD9;
+colorWhite       = #fff;
+colorGreyLight   = #D2C9C1;
+colorGrey        = #645C59;
+colorGreyDark    = #635B58;
+colorGreyDarkest = #2D2D2E;
+
+/* **************
+   Style
+************** */
+.box
+  width 50vmin
+  height 50vmin
+  position relative
+.pixelskull
+  position absolute
+  top 0
+  left 0
+  width 0
+  height 0
+  margin 0
+  box-shadow (basys*8)  0          0 (basys/2) colorBlue,
+             (basys*9)  0          0 (basys/2) colorGrey,
+             (basys*10) 0          0 (basys/2) colorBlue,
+             (basys*11) 0          0 (basys/2) colorGrey,
+             (basys*12) 0          0 (basys/2) colorBlue,
+
+             (basys*7)  basys      0 (basys/2) colorGrey,
+             (basys*8)  basys      0 (basys/2) colorBlue,
+             (basys*9)  basys      0 (basys/2) colorGreyDarkest,
+             (basys*10) basys      0 (basys/2) colorBlue,
+             (basys*11) basys      0 (basys/2) colorGreyDarkest,
+             (basys*12) basys      0 (basys/2) colorBlue,
+             (basys*13) basys      0 (basys/2) colorGrey,
+
+             (basys*6)  (basys*2)  0 (basys/2) colorBlue,
+             (basys*7)  (basys*2)  0 (basys/2) colorGreyDarkest,
+             (basys*8)  (basys*2)  0 (basys/2) colorBlue,
+             (basys*9)  (basys*2)  0 (basys/2) colorGreyDarkest,
+             (basys*10) (basys*2)  0 (basys/2) colorBlue,
+             (basys*11) (basys*2)  0 (basys/2) colorGreyDarkest,
+             (basys*12) (basys*2)  0 (basys/2) colorBlue,
+             (basys*13) (basys*2)  0 (basys/2) colorGreyDarkest,
+             (basys*14) (basys*2)  0 (basys/2) colorBlue,
+             (basys*16) (basys*2)  0 (basys/2) colorGrey,
+
+             (basys*6)  (basys*3)  0 (basys/2) colorBlue,
+             (basys*7)  (basys*3)  0 (basys/2) colorGreyDarkest,
+             (basys*8)  (basys*3)  0 (basys/2) colorBlue,
+             (basys*9)  (basys*3)  0 (basys/2) colorGreyDarkest,
+             (basys*10) (basys*3)  0 (basys/2) colorBlue,
+             (basys*11) (basys*3)  0 (basys/2) colorGreyDarkest,
+             (basys*12) (basys*3)  0 (basys/2) colorBlue,
+             (basys*13) (basys*3)  0 (basys/2) colorGreyDarkest,
+             (basys*14) (basys*3)  0 (basys/2) colorBlue,
+             (basys*15) (basys*3)  0 (basys/2) colorGrey,
+
+             (basys*6)  (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*7)  (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*8)  (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*9)  (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*10) (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*11) (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*12) (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*13) (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*14) (basys*4)  0 (basys/2) colorGreyLight,
+             (basys*16) (basys*4)  0 (basys/2) colorGrey,
+
+             (basys*6)  (basys*5)  0 (basys/2) colorGreyLight,
+             (basys*7)  (basys*5)  0 (basys/2) colorGreyDarkest,
+             (basys*8)  (basys*5)  0 (basys/2) colorGreyDarkest,
+             (basys*9)  (basys*5)  0 (basys/2) colorGreyLight,
+             (basys*10) (basys*5)  0 (basys/2) colorGreyLight,
+             (basys*11) (basys*5)  0 (basys/2) colorGreyLight,
+             (basys*12) (basys*5)  0 (basys/2) colorGreyDarkest,
+             (basys*13) (basys*5)  0 (basys/2) colorGreyDarkest,
+             (basys*14) (basys*5)  0 (basys/2) colorGreyLight,
+
+             (basys*5)  (basys*6)  0 (basys/2) colorGreyLight,
+             (basys*6)  (basys*6)  0 (basys/2) colorGreyLight,
+             (basys*7)  (basys*6)  0 (basys/2) colorBlue,
+             (basys*8)  (basys*6)  0 (basys/2) colorGreyDark,
+             (basys*9)  (basys*6)  0 (basys/2) colorWhite,
+             (basys*10) (basys*6)  0 (basys/2) colorWhite,
+             (basys*11) (basys*6)  0 (basys/2) colorWhite,
+             (basys*12) (basys*6)  0 (basys/2) colorBlue,
+             (basys*13) (basys*6)  0 (basys/2) colorGreyDark,
+             (basys*14) (basys*6)  0 (basys/2) colorGreyLight,
+             (basys*15) (basys*6)  0 (basys/2) colorGreyLight,
+
+             (basys*5)  (basys*7)  0 (basys/2) colorGreyLight,
+             (basys*6)  (basys*7)  0 (basys/2) colorGreyLight,
+             (basys*7)  (basys*7)  0 (basys/2) colorWhite,
+             (basys*8)  (basys*7)  0 (basys/2) colorWhite,
+             (basys*9)  (basys*7)  0 (basys/2) colorWhite,
+             (basys*10) (basys*7)  0 (basys/2) colorGreyDarkest,
+             (basys*11) (basys*7)  0 (basys/2) colorWhite,
+             (basys*12) (basys*7)  0 (basys/2) colorWhite,
+             (basys*13) (basys*7)  0 (basys/2) colorWhite,
+             (basys*14) (basys*7)  0 (basys/2) colorGreyLight,
+             (basys*15) (basys*7)  0 (basys/2) colorGreyLight,
+
+             (basys*6)  (basys*8)  0 (basys/2) colorGreyLight,
+             (basys*7)  (basys*8)  0 (basys/2) colorGreyLight,
+             (basys*8)  (basys*8)  0 (basys/2) colorWhite,
+             (basys*9)  (basys*8)  0 (basys/2) colorWhite,
+             (basys*10) (basys*8)  0 (basys/2) colorWhite,
+             (basys*11) (basys*8)  0 (basys/2) colorWhite,
+             (basys*12) (basys*8)  0 (basys/2) colorWhite,
+             (basys*13) (basys*8)  0 (basys/2) colorGreyLight,
+             (basys*14) (basys*8)  0 (basys/2) colorGreyLight,
+
+             (basys*8)  (basys*9)  0 (basys/2) colorGreyLight,
+             (basys*9)  (basys*9)  0 (basys/2) colorWhite,
+             (basys*10) (basys*9)  0 (basys/2) colorGreyLight,
+             (basys*11) (basys*9)  0 (basys/2) colorWhite,
+             (basys*12) (basys*9)  0 (basys/2) colorGreyLight,
+
+             (basys*8)  (basys*11) 0 (basys/2) colorWhite,
+             (basys*10) (basys*11) 0 (basys/2) colorWhite,
+             (basys*12) (basys*11) 0 (basys/2) colorWhite,
+
+             (basys*5)  (basys*14) 0 (basys/2) colorWhite,
+             (basys*6)  (basys*14) 0 (basys/2) colorWhite,
+             (basys*7)  (basys*14) 0 (basys/2) colorWhite,
+             (basys*8)  (basys*14) 0 (basys/2) colorWhite,
+             (basys*9)  (basys*14) 0 (basys/2) colorWhite,
+             (basys*10) (basys*14) 0 (basys/2) colorWhite,
+             (basys*11) (basys*14) 0 (basys/2) colorWhite,
+             (basys*12) (basys*14) 0 (basys/2) colorWhite,
+             (basys*13) (basys*14) 0 (basys/2) colorWhite,
+             (basys*14) (basys*14) 0 (basys/2) colorWhite,
+             (basys*15) (basys*14) 0 (basys/2) colorWhite,
+
+             (basys*3)  (basys*15) 0 (basys/2) colorWhite,
+             (basys*4)  (basys*15) 0 (basys/2) colorWhite,
+             (basys*5)  (basys*15) 0 (basys/2) colorWhite,
+             (basys*6)  (basys*15) 0 (basys/2) colorWhite,
+             (basys*7)  (basys*15) 0 (basys/2) colorWhite,
+             (basys*8)  (basys*15) 0 (basys/2) colorBlue,
+             (basys*9)  (basys*15) 0 (basys/2) colorWhite,
+             (basys*10) (basys*15) 0 (basys/2) colorBlue,
+             (basys*11) (basys*15) 0 (basys/2) colorWhite,
+             (basys*12) (basys*15) 0 (basys/2) colorBlue,
+             (basys*13) (basys*15) 0 (basys/2) colorWhite,
+             (basys*14) (basys*15) 0 (basys/2) colorWhite,
+             (basys*15) (basys*15) 0 (basys/2) colorWhite,
+             (basys*16) (basys*15) 0 (basys/2) colorWhite,
+             (basys*17) (basys*15) 0 (basys/2) colorWhite,
+
+             (basys*3)  (basys*16) 0 (basys/2) colorWhite,
+             (basys*4)  (basys*16) 0 (basys/2) colorWhite,
+             (basys*5)  (basys*16) 0 (basys/2) colorWhite,
+             (basys*6)  (basys*16) 0 (basys/2) colorWhite,
+             (basys*7)  (basys*16) 0 (basys/2) colorWhite,
+             (basys*8)  (basys*16) 0 (basys/2) colorWhite,
+             (basys*9)  (basys*16) 0 (basys/2) colorWhite,
+             (basys*10) (basys*16) 0 (basys/2) colorWhite,
+             (basys*11) (basys*16) 0 (basys/2) colorWhite,
+             (basys*12) (basys*16) 0 (basys/2) colorWhite,
+             (basys*13) (basys*16) 0 (basys/2) colorWhite,
+             (basys*14) (basys*16) 0 (basys/2) colorWhite,
+             (basys*15) (basys*16) 0 (basys/2) colorWhite,
+             (basys*16) (basys*16) 0 (basys/2) colorWhite,
+             (basys*17) (basys*16) 0 (basys/2) colorWhite,
+
+             0          (basys*17) 0 (basys/2) colorGreyLight,
+             basys      (basys*17) 0 (basys/2) colorGreyLight,
+             (basys*2)  (basys*17) 0 (basys/2) colorGreyLight,
+             (basys*3)  (basys*17) 0 (basys/2) colorWhite,
+             (basys*4)  (basys*17) 0 (basys/2) colorWhite,
+             (basys*5)  (basys*17) 0 (basys/2) colorWhite,
+             (basys*15) (basys*17) 0 (basys/2) colorWhite,
+             (basys*16) (basys*17) 0 (basys/2) colorWhite,
+             (basys*17) (basys*17) 0 (basys/2) colorWhite,
+             (basys*18) (basys*17) 0 (basys/2) colorGreyLight,
+             (basys*19) (basys*17) 0 (basys/2) colorGreyLight,
+             (basys*20) (basys*17) 0 (basys/2) colorGreyLight,
+
+             basys      (basys*18) 0 (basys/2) colorGreyLight,
+             (basys*2)  (basys*18) 0 (basys/2) colorGreyLight,
+             (basys*3)  (basys*18) 0 (basys/2) colorGreyDark,
+             (basys*4)  (basys*18) 0 (basys/2) colorGreyDark,
+             (basys*16) (basys*18) 0 (basys/2) colorGreyDark,
+             (basys*17) (basys*18) 0 (basys/2) colorGreyDark,
+             (basys*18) (basys*18) 0 (basys/2) colorGreyLight,
+             (basys*19) (basys*18) 0 (basys/2) colorGreyLight,
+
+             0          (basys*19) 0 (basys/2) colorGreyLight,
+             basys      (basys*19) 0 (basys/2) colorGreyLight,
+             (basys*2)  (basys*19) 0 (basys/2) colorGreyLight,
+             (basys*3)  (basys*19) 0 (basys/2) colorGreyLight,
+             (basys*4)  (basys*19) 0 (basys/2) colorGreyDark,
+             (basys*16) (basys*19) 0 (basys/2) colorGreyDark,
+             (basys*17) (basys*19) 0 (basys/2) colorGreyLight,
+             (basys*18) (basys*19) 0 (basys/2) colorGreyLight,
+             (basys*19) (basys*19) 0 (basys/2) colorGreyLight,
+             (basys*20) (basys*19) 0 (basys/2) colorGreyLight;

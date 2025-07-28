@@ -1,0 +1,1 @@
+//For what it's worth, you can replace the quote with one of your own. As long as each paragraph is marked up properly and the author attribution is in the <footer> element, the quotes will still function the same way!

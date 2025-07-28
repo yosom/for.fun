@@ -1,0 +1,532 @@
+/* You can change these */
+$size: 7;
+$distance: 7;
+
+/* Colors */
+$j-skin: #fac384;
+$j-eyes: #060402;
+$j-hair: #2c1b12;
+$j-shirt: #2d71b5;
+$j-belt: #242424;
+$j-belt-buckle: #c3c3c3;
+$j-trousers: #333333;
+$j-shoes: #000000;
+
+$a-skin: #fbcd9b;
+$a-eyes: #007700;
+$a-lips: #ff6197;
+$a-hair: #c2763d;
+$a-eyebrows: #d69068;
+$a-earring: #c3c3c3;
+$a-dress: #bfbfbf;
+$a-shoes: #bfbfbf;
+
+body {
+  font-size: #{$size}px;
+  background-color: #4ea077;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.james {
+  background: $j-belt;
+  position: relative;
+  left: -#{$distance}em;
+  height: 1em;
+  width: 1em;
+  box-shadow: 
+    // Line 0
+    -6em 0 0 $j-skin,
+    -5em 0 0 $j-skin,
+    -3em 0 0 $j-belt,
+    -2em 0 0 $j-trousers,
+    -1em 0 0 $j-belt,
+    1em 0 0 $j-belt-buckle,
+    2em 0 0 $j-belt,
+    3em 0 0 $j-trousers,
+    4em 0 0 $j-skin,
+    5em 0 0 $j-skin,
+    
+    // Line 1
+    -6em 1em 0 $j-skin,
+    -5em 1em 0 $j-skin,
+    -3em 1em 0 $j-trousers,
+    -2em 1em 0 $j-trousers,
+    -1em 1em 0 $j-trousers,
+    0em 1em 0 $j-trousers,
+    1em 1em 0 $j-trousers,
+    2em 1em 0 $j-trousers,
+    3em 1em 0 $j-trousers,
+    4em 1em 0 $j-skin,
+    
+    // Line 2
+    -3em 2em 0 $j-trousers,
+    -2em 2em 0 $j-trousers,
+    -1em 2em 0 $j-trousers,
+    0em 2em 0 $j-trousers,
+    1em 2em 0 $j-trousers,
+    2em 2em 0 $j-trousers,
+    3em 2em 0 $j-trousers,
+    
+    // Line 3
+    -3em 3em 0 $j-trousers,
+    -2em 3em 0 $j-trousers,
+    2em 3em 0 $j-trousers,
+    3em 3em 0 $j-trousers,
+    
+    // Line 4
+    -3em 4em 0 $j-trousers,
+    -2em 4em 0 $j-trousers,
+    2em 4em 0 $j-trousers,
+    3em 4em 0 $j-trousers,
+    
+    // Line 5
+    -3em 5em 0 $j-trousers,
+    -2em 5em 0 $j-trousers,
+    2em 5em 0 $j-trousers,
+    3em 5em 0 $j-trousers,
+    
+    // Line 6
+    -3em 6em 0 $j-trousers,
+    -2em 6em 0 $j-trousers,
+    2em 6em 0 $j-trousers,
+    3em 6em 0 $j-trousers,
+    
+    // Line 7
+    -3em 7em 0 $j-trousers,
+    -2em 7em 0 $j-trousers,
+    2em 7em 0 $j-trousers,
+    3em 7em 0 $j-trousers,
+    
+    // Line 8
+    -3em 8em 0 $j-trousers,
+    -2em 8em 0 $j-trousers,
+    2em 8em 0 $j-trousers,
+    3em 8em 0 $j-trousers,
+    
+    // Line 9
+    -3em 9em 0 $j-trousers,
+    -2em 9em 0 $j-trousers,
+    2em 9em 0 $j-trousers,
+    3em 9em 0 $j-trousers,
+    
+    // Line 10
+    -3em 10em 0 $j-trousers,
+    -2em 10em 0 $j-trousers,
+    2em 10em 0 $j-trousers,
+    3em 10em 0 $j-trousers,
+    
+    // Line 11
+    -2em 11em 0 $j-shoes,
+    -1em 11em 0 $j-shoes,
+    3em 11em 0 $j-shoes,
+    4em 11em 0 $j-shoes,
+    
+    // Line -1
+    -7em -1em 0 $j-skin,
+    -6em -1em 0 $j-skin,
+    -3em -1em 0 $j-shirt,
+    -2em -1em 0 $j-shirt,
+    -1em -1em 0 $j-shirt,
+    0em -1em 0 $j-shirt,
+    1em -1em 0 $j-shirt,
+    2em -1em 0 $j-shirt,
+    3em -1em 0 $j-shirt,
+    5em -1em 0 $j-skin,
+    
+    // Line -2
+    -7em -2em 0 $j-skin,
+    -6em -2em 0 $j-skin,
+    -3em -2em 0 $j-shirt,
+    -2em -2em 0 $j-shirt,
+    -1em -2em 0 $j-shirt,
+    0em -2em 0 $j-shirt,
+    1em -2em 0 $j-shirt,
+    2em -2em 0 $j-shirt,
+    3em -2em 0 $j-shirt,
+    5em -2em 0 $j-skin,
+    
+    // Line -3
+    -7em -3em 0 $j-skin,
+    -6em -3em 0 $j-skin,
+    -3em -3em 0 $j-shirt,
+    -2em -3em 0 $j-shirt,
+    -1em -3em 0 $j-shirt,
+    0em -3em 0 $j-shirt,
+    1em -3em 0 $j-shirt,
+    2em -3em 0 $j-shirt,
+    3em -3em 0 $j-shirt,
+    5em -3em 0 $j-skin,
+    
+    // Line -4
+    -6em -4em 0 $j-shirt,
+    -5em -4em 0 $j-shirt,
+    -3em -4em 0 $j-shirt,
+    -2em -4em 0 $j-shirt,
+    -1em -4em 0 $j-shirt,
+    0em -4em 0 $j-shirt,
+    1em -4em 0 $j-shirt,
+    2em -4em 0 $j-shirt,
+    3em -4em 0 $j-shirt,
+    5em -4em 0 $j-shirt,
+    
+    // Line -5
+    -6em -5em 0 $j-shirt,
+    -5em -5em 0 $j-shirt,
+    -4em -5em 0 $j-shirt,
+    -3em -5em 0 $j-shirt,
+    -2em -5em 0 $j-shirt,
+    -1em -5em 0 $j-shirt,
+    0em -5em 0 $j-shirt,
+    1em -5em 0 $j-shirt,
+    2em -5em 0 $j-shirt,
+    3em -5em 0 $j-shirt,
+    4em -5em 0 $j-shirt,
+    
+    // Line -6
+    -5em -6em 0 $j-shirt,
+    -4em -6em 0 $j-shirt,
+    -3em -6em 0 $j-shirt,
+    -2em -6em 0 $j-shirt,
+    -1em -6em 0 $j-shirt,
+    0em -6em 0 $j-shirt,
+    1em -6em 0 $j-shirt,
+    2em -6em 0 $j-shirt,
+    3em -6em 0 $j-shirt,
+    4em -6em 0 $j-shirt,
+    
+    // Line -7
+    -4em -7em 0 $j-shirt,
+    -3em -7em 0 $j-shirt,
+    -2em -7em 0 $j-shirt,
+    -1em -7em 0 $j-shirt,
+    0em -7em 0 $j-shirt,
+    1em -7em 0 $j-shirt,
+    2em -7em 0 $j-shirt,
+    3em -7em 0 $j-shirt,
+    
+    // Line -8
+    -2em -8em 0 $j-shirt,
+    -1em -8em 0 $j-skin,
+    0em -8em 0 $j-skin,
+    1em -8em 0 $j-skin,
+    
+    // Line -9
+    -2em -9em 0 $j-skin,
+    -1em -9em 0 $j-skin,
+    0em -9em 0 $j-skin,
+    1em -9em 0 $j-skin,
+    2em -9em 0 $j-skin,
+    3em -9em 0 $j-skin,
+    
+    // Line -10
+    -2em -10em 0 $j-skin,
+    -1em -10em 0 $j-skin,
+    0em -10em 0 $j-skin,
+    1em -10em 0 $j-skin,
+    2em -10em 0 $j-skin,
+    
+    // Line -11
+    -2em -11em 0 $j-skin,
+    -1em -11em 0 $j-skin,
+    0em -11em 0 $j-skin,
+    1em -11em 0 $j-skin,
+    2em -11em 0 $j-skin,
+    3em -11em 0 $j-skin,
+    
+    // Line -12
+    -3em -12em 0 $j-skin,
+    -2em -12em 0 $j-skin,
+    -1em -12em 0 $j-skin,
+    0em -12em 0 $j-skin,
+    1em -12em 0 $j-skin,
+    2em -12em 0 $j-skin,
+    3em -12em 0 $j-skin,
+    4em -12em 0 $j-skin,
+    
+    // Line -13
+    -3em -13em 0 $j-skin,
+    -2em -13em 0 $j-hair,
+    -1em -13em 0 $j-skin,
+    0em -13em 0 $j-skin,
+    1em -13em 0 $j-skin,
+    2em -13em 0 $j-skin,
+    3em -13em 0 $j-skin,
+    
+    // Line -14
+    -3em -14em 0 $j-hair,
+    -2em -14em 0 $j-hair,
+    -1em -14em 0 $j-skin,
+    0em -14em 0 $j-skin,
+    1em -14em 0 $j-eyes,
+    2em -14em 0 $j-skin,
+    3em -14em 0 $j-eyes,
+    
+    // Line -15
+    -3em -15em 0 $j-hair,
+    -2em -15em 0 $j-hair,
+    -1em -15em 0 $j-skin,
+    0em -15em 0 $j-eyes,
+    1em -15em 0 $j-eyes,
+    2em -15em 0 $j-skin,
+    3em -15em 0 $j-eyes,
+    
+    // Line -16
+    -3em -16em 0 $j-hair,
+    -2em -16em 0 $j-hair,
+    -1em -16em 0 $j-hair,
+    0em -16em 0 $j-skin,
+    1em -16em 0 $j-skin,
+    2em -16em 0 $j-skin,
+    3em -16em 0 $j-skin,
+    
+    // Line -17
+    -3em -17em 0 $j-hair,
+    -2em -17em 0 $j-hair,
+    -1em -17em 0 $j-hair,
+    0em -17em 0 $j-skin,
+    1em -17em 0 $j-skin,
+    2em -17em 0 $j-skin,
+    3em -17em 0 $j-skin,
+    
+    // Line -18
+    -3em -18em 0 $j-hair,
+    -2em -18em 0 $j-hair,
+    -1em -18em 0 $j-hair,
+    0em -18em 0 $j-hair,
+    1em -18em 0 $j-hair,
+    2em -18em 0 $j-hair,
+    3em -18em 0 $j-hair,
+    
+    // Line -19
+    -2em -19em 0 $j-hair,
+    -1em -19em 0 $j-hair,
+    0em -19em 0 $j-hair,
+    1em -19em 0 $j-hair,
+    2em -19em 0 $j-hair;
+}
+
+.anna {
+  background: $a-dress;
+  height: 1em;
+  width: 1em;
+  position: relative;
+  right: -#{$distance}em;
+  bottom: -3em;
+  box-shadow:
+    // Line 0
+    -3em 0 0 $a-dress,
+    -2em 0 0 $a-dress,
+    -1em 0 0 $a-dress,
+    1em 0 0 $a-dress,
+    
+    // Line 1
+    -2em 1em 0 $a-dress,
+    -1em 1em 0 $a-dress,
+    0em 1em 0 $a-dress,
+    1em 1em 0 $a-dress,
+    
+    // Line 2
+    -2em 2em 0 $a-dress,
+    -1em 2em 0 $a-dress,
+    0em 2em 0 $a-dress,
+    1em 2em 0 $a-dress,
+    
+    // Line 3
+    -2em 3em 0 $a-skin,
+    1em 3em 0 $a-skin,
+    
+    // Line 4
+    -3em 4em 0 $a-skin,
+    1em 4em 0 $a-skin,
+    
+    // Line 5
+    -3em 5em 0 $a-skin,
+    1em 5em 0 $a-skin,
+    
+    // Line 6
+    -3em 6em 0 $a-skin,
+    1em 6em 0 $a-skin,
+    
+    // Line 7
+    -3em 7em 0 $a-shoes,
+    -2em 7em 0 $a-shoes,
+    1em 7em 0 $a-shoes,
+    2em 7em 0 $a-shoes,
+    
+    // Line -1
+    -3em -1em 0 $a-dress,
+    -2em -1em 0 $a-dress,
+    -1em -1em 0 $a-dress,
+    0em -1em 0 $a-dress,
+    1em -1em 0 $a-dress,
+    2em -1em 0 $a-dress,
+    
+    // Line -2
+    -3em -2em 0 $a-dress,
+    -1em -2em 0 $a-dress,
+    0em -2em 0 $a-dress,
+    1em -2em 0 $a-dress,
+    3em -2em 0 $a-dress,
+    
+    // Line -3
+    -3em -3em 0 $a-dress,
+    -1em -3em 0 $a-dress,
+    0em -3em 0 $a-dress,
+    1em -3em 0 $a-dress,
+    3em -3em 0 $a-skin,
+    
+    // Line -4
+    -3em -4em 0 $a-skin,
+    -1em -4em 0 $a-dress,
+    0em -4em 0 $a-dress,
+    1em -4em 0 $a-dress,
+    2em -4em 0 $a-dress,
+    
+    // Line -5
+    -3em -5em 0 $a-skin,
+    -1em -5em 0 $a-dress,
+    0em -5em 0 $a-dress,
+    1em -5em 0 $a-dress,
+    2em -5em 0 $a-dress,
+    
+    // Line -6
+    -2em -6em 0 $a-skin,
+    -1em -6em 0 $a-skin,
+    0em -6em 0 $a-skin,
+    1em -6em 0 $a-skin,
+    2em -6em 0 $a-skin,
+    
+    // Line -7
+    -2em -7em 0 $a-hair,
+    -1em -7em 0 $a-hair,
+    0em -7em 0 $a-skin,
+    1em -7em 0 $a-skin,
+    
+    // Line -8
+    -3em -8em 0 $a-hair,
+    -2em -8em 0 $a-hair,
+    -1em -8em 0 $a-hair,
+    0em -8em 0 $a-skin,
+    1em -8em 0 $a-skin,
+    2em -8em 0 $a-hair,
+    3em -8em 0 $a-hair,
+    
+    // Line -9
+    -4em -9em 0 $a-hair,
+    -3em -9em 0 $a-hair,
+    -2em -9em 0 $a-hair,
+    -1em -9em 0 $a-hair,
+    0em -9em 0 $a-skin,
+    1em -9em 0 $a-skin,
+    2em -9em 0 $a-skin,
+    3em -9em 0 $a-skin,
+    4em -9em 0 $a-hair,
+    
+    // Line -10
+    -4em -10em 0 $a-hair,
+    -3em -10em 0 $a-hair,
+    -2em -10em 0 $a-earring,
+    -1em -10em 0 $a-hair,
+    0em -10em 0 $a-skin,
+    1em -10em 0 $a-skin,
+    2em -10em 0 $a-lips,
+    3em -10em 0 $a-lips,
+    4em -10em 0 $a-hair,
+    
+    // Line -11
+    -4em -11em 0 $a-hair,
+    -3em -11em 0 $a-hair,
+    -2em -11em 0 $a-earring,
+    -1em -11em 0 $a-hair,
+    0em -11em 0 $a-skin,
+    1em -11em 0 $a-skin,
+    2em -11em 0 $a-skin,
+    3em -11em 0 $a-skin,
+    4em -11em 0 $a-skin,
+    
+    // Line -12
+    -4em -12em 0 $a-hair,
+    -3em -12em 0 $a-hair,
+    -2em -12em 0 $a-earring,
+    -1em -12em 0 $a-hair,
+    0em -12em 0 $a-skin,
+    1em -12em 0 $a-skin,
+    2em -12em 0 $a-skin,
+    3em -12em 0 $a-skin,
+    4em -12em 0 $a-skin,
+    5em -12em 0 $a-skin,
+    
+    // Line -13
+    -4em -13em 0 $a-hair,
+    -3em -13em 0 $a-hair,
+    -2em -13em 0 $a-hair,
+    -1em -13em 0 $a-skin,
+    0em -13em 0 $a-skin,
+    1em -13em 0 $a-skin,
+    2em -13em 0 $a-eyes,
+    3em -13em 0 $a-skin,
+    4em -13em 0 $a-eyes,
+    
+    // Line -14
+    -5em -14em 0 $a-hair,
+    -3em -14em 0 $a-hair,
+    -2em -14em 0 $a-hair,
+    -1em -14em 0 $a-hair,
+    0em -14em 0 $a-skin,
+    1em -14em 0 $a-eyebrows,
+    2em -14em 0 $a-eyebrows,
+    3em -14em 0 $a-skin,
+    4em -14em 0 $a-eyebrows,
+    5em -14em 0 $a-hair,
+    
+    // Line -15
+    -3em -15em 0 $a-hair,
+    -2em -15em 0 $a-hair,
+    -1em -15em 0 $a-hair,
+    0em -15em 0 $a-skin,
+    1em -15em 0 $a-skin,
+    2em -15em 0 $a-skin,
+    3em -15em 0 $a-skin,
+    4em -15em 0 $a-skin,
+    5em -15em 0 $a-hair,
+    
+    // Line -16
+    -3em -16em 0 $a-hair,
+    -2em -16em 0 $a-hair,
+    -1em -16em 0 $a-hair,
+    0em -16em 0 $a-hair,
+    1em -16em 0 $a-hair,
+    2em -16em 0 $a-skin,
+    3em -16em 0 $a-skin,
+    4em -16em 0 $a-hair,
+    5em -16em 0 $a-hair,
+    
+    // Line -17
+    -2em -17em 0 $a-hair,
+    -1em -17em 0 $a-hair,
+    0em -17em 0 $a-hair,
+    1em -17em 0 $a-hair,
+    2em -17em 0 $a-hair,
+    3em -17em 0 $a-hair,
+    4em -17em 0 $a-hair,
+    
+    // Line -18
+    -2em -18em 0 $a-hair,
+    -1em -18em 0 $a-hair,
+    0em -18em 0 $a-hair,
+    1em -18em 0 $a-hair,
+    2em -18em 0 $a-hair,
+    3em -18em 0 $a-hair,
+    4em -18em 0 $a-hair,
+    
+    // Line -19
+    -1em -19em 0 $a-hair,
+    0em -19em 0 $a-hair,
+    2em -19em 0 $a-hair,
+    3em -19em 0 $a-hair;
+}

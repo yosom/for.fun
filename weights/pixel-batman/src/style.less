@@ -1,0 +1,118 @@
+@darkblue: #034661;
+@blue: #006999;
+@lightblue: #018FD1;
+@darkskin: #F49007;
+@skin: #F4A943;
+@black: #000;
+@gray: #666;
+@darkgray: #333;
+@yellow: #FFE001;
+@darkyellow: #E5BF02;
+@size: 7px; // pixel size
+
+body {
+  background-color: #eee;
+  margin: 5px;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.batman {
+  position: absolute;
+  width: 21*@size;
+  height: 38*@size;
+  top: 50%;
+  left:50%;
+  margin-left: -(21*@size)/2;
+  margin-top: -(38*@size)/2;
+}
+
+.batman:before {
+  position: absolute;
+  content: '';
+  display: block;
+  width: @size;
+  height: @size;
+}
+
+/* pixel art */
+.batman::before {
+  box-shadow: 
+    /* line 1 */
+    8*@size 0 @darkblue,14*@size 0 @lightblue,
+    /* line 2 */
+    8*@size @size @darkblue,14*@size @size @lightblue,
+    /* line 3 */
+    8*@size 2*@size @darkblue,9*@size 2*@size @lightblue, 13*@size 2*@size @blue,14*@size 2*@size @lightblue,
+    /* line 4 */
+    8*@size 3*@size @darkblue,9*@size 3*@size @blue,10*@size 3*@size @blue,11*@size 3*@size @blue,12*@size 3*@size @blue, 13*@size 3*@size @blue,14*@size 3*@size @lightblue,
+    /* line 5 */
+    8*@size 4*@size @darkblue,9*@size 4*@size @blue,10*@size 4*@size @blue,11*@size 4*@size @blue,12*@size 4*@size @blue, 13*@size 4*@size @blue,14*@size 4*@size @lightblue,
+    /* line 6 */
+    8*@size 5*@size @darkblue,9*@size 5*@size @blue,10*@size 5*@size @blue,11*@size 5*@size @blue,12*@size 5*@size @blue, 13*@size 5*@size @blue,14*@size 5*@size @lightblue,
+    /* line 7 */
+    8*@size 6*@size @darkblue,10*@size 6*@size @blue,11*@size 6*@size @blue,12*@size 6*@size @blue,14*@size 6*@size @lightblue,
+    /* line 8 */
+    8*@size 7*@size @darkblue,9*@size 7*@size @blue,10*@size 7*@size @blue,11*@size 7*@size @blue,12*@size 7*@size @blue, 13*@size 7*@size @blue,14*@size 7*@size @lightblue,
+    /* line 9 */
+    8*@size 8*@size @darkblue,9*@size 8*@size @blue,10*@size 8*@size @blue,11*@size 8*@size @blue,12*@size 8*@size @blue, 13*@size 8*@size @blue,14*@size 8*@size @lightblue,
+    /* line 10 */
+    8*@size 9*@size @darkblue,9*@size 9*@size @darkskin,10*@size 9*@size @darkskin,11*@size 9*@size @darkskin,12*@size 9*@size @darkskin, 13*@size 9*@size @darkskin,14*@size 9*@size @lightblue,
+    /* line 11 */
+    8*@size 10*@size @darkblue,9*@size 10*@size @skin,10*@size 10*@size @skin,11*@size 10*@size @skin,12*@size 10*@size @skin, 13*@size 10*@size @skin,14*@size 10*@size @lightblue,
+    /* line 12 */
+    8*@size 11*@size @darkblue,9*@size 11*@size @skin,10*@size 11*@size @skin,11*@size 11*@size @skin,12*@size 11*@size @skin, 13*@size 11*@size @skin,14*@size 11*@size @lightblue,
+    /* line 13 */
+    8*@size 12*@size @darkblue,9*@size 12*@size @blue,10*@size 12*@size @skin,11*@size 12*@size @darkskin,12*@size 12*@size @skin, 13*@size 12*@size @blue,14*@size 12*@size @lightblue,
+    /* line 14 */
+    7*@size 13*@size @black,8*@size 13*@size @darkblue,9*@size 13*@size @blue,10*@size 13*@size @blue,11*@size 13*@size @blue,12*@size 13*@size @blue,13*@size 13*@size @blue,14*@size 13*@size @lightblue,15*@size 13*@size @black,
+    /* line 15 */
+    6*@size 14*@size @black,7*@size 14*@size @black,8*@size 14*@size @darkblue,9*@size 14*@size @blue,10*@size 14*@size @blue,11*@size 14*@size @blue,12*@size 14*@size @blue,13*@size 14*@size @blue,14*@size 14*@size @lightblue,15*@size 14*@size @black,16*@size 14*@size @black,
+    /* line 16 */
+    5*@size 15*@size @blue,6*@size 15*@size @blue,7*@size 15*@size @blue,8*@size 15*@size @blue,9*@size 15*@size @blue,10*@size 15*@size @blue,11*@size 15*@size @blue,12*@size 15*@size @blue,13*@size 15*@size @blue,14*@size 15*@size @blue,15*@size 15*@size @lightblue,16*@size 15*@size @lightblue,17*@size 15*@size @lightblue,
+    /* line 17 */
+    4*@size 16*@size @darkblue,5*@size 16*@size @blue,6*@size 16*@size @blue,7*@size 16*@size @blue,8*@size 16*@size @blue,9*@size 16*@size @blue,10*@size 16*@size @blue,11*@size 16*@size @blue,12*@size 16*@size @blue,13*@size 16*@size @blue,14*@size 16*@size @blue,15*@size 16*@size @blue,16*@size 16*@size @blue,17*@size 16*@size @blue,18*@size 16*@size @lightblue,
+    /* line 18 */
+    4*@size 17*@size @darkblue,5*@size 17*@size @blue,6*@size 17*@size @black,7*@size 17*@size @darkblue,8*@size 17*@size @blue,9*@size 17*@size @blue,10*@size 17*@size @darkblue,11*@size 17*@size @darkblue,12*@size 17*@size @darkblue,13*@size 17*@size @blue,14*@size 17*@size @blue,15*@size 17*@size @lightblue,16*@size 17*@size @black,17*@size 17*@size @blue,18*@size 17*@size @lightblue,
+    /* line 19 */
+    4*@size 18*@size @darkblue,5*@size 18*@size @blue,6*@size 18*@size @black,7*@size 18*@size @darkblue,8*@size 18*@size @blue,9*@size 18*@size @darkblue,10*@size 18*@size @darkblue,11*@size 18*@size @darkblue,12*@size 18*@size @darkblue,13*@size 18*@size @darkblue,14*@size 18*@size @blue,15*@size 18*@size @lightblue,16*@size 18*@size @black,17*@size 18*@size @blue,18*@size 18*@size @lightblue,
+    /* line 20 */
+    4*@size 19*@size @darkblue,5*@size 19*@size @blue,6*@size 19*@size @black,7*@size 19*@size @darkblue,8*@size 19*@size @blue,9*@size 19*@size @blue,10*@size 19*@size @darkblue,11*@size 19*@size @darkblue,12*@size 19*@size @darkblue,13*@size 19*@size @blue,14*@size 19*@size @blue,15*@size 19*@size @lightblue,16*@size 19*@size @black,17*@size 19*@size @blue,18*@size 19*@size @lightblue,
+    /* line 21 */
+    4*@size 20*@size @darkgray,5*@size 20*@size @gray,6*@size 20*@size @black,7*@size 20*@size @darkblue,8*@size 20*@size @blue,9*@size 20*@size @blue,10*@size 20*@size @blue,11*@size 20*@size @blue,12*@size 20*@size @blue,13*@size 20*@size @blue,14*@size 20*@size @blue,15*@size 20*@size @lightblue,16*@size 20*@size @black,17*@size 20*@size @darkgray,18*@size 20*@size @gray,
+    /* line 22 */
+    1*@size 21*@size @darkgray,2*@size 21*@size @darkgray,3*@size 21*@size @darkgray,4*@size 21*@size @darkgray,5*@size 21*@size @gray,6*@size 21*@size @black,7*@size 21*@size @darkblue,8*@size 21*@size @blue,9*@size 21*@size @blue,10*@size 21*@size @blue,11*@size 21*@size @blue,12*@size 21*@size @blue,13*@size 21*@size @blue,14*@size 21*@size @blue,15*@size 21*@size @lightblue,16*@size 21*@size @black,17*@size 21*@size @darkgray,18*@size 21*@size @gray,19*@size 21*@size @gray,20*@size 21*@size @gray,21*@size 21*@size @gray,
+    /* line 23 */
+    2*@size 22*@size @darkgray,3*@size 22*@size @darkgray,4*@size 22*@size @darkgray,5*@size 22*@size @gray,6*@size 22*@size @black,7*@size 22*@size @darkblue,8*@size 22*@size @blue,9*@size 22*@size @blue,10*@size 22*@size @blue,11*@size 22*@size @blue,12*@size 22*@size @blue,13*@size 22*@size @blue,14*@size 22*@size @blue,15*@size 22*@size @lightblue,16*@size 22*@size @black,17*@size 22*@size @darkgray,18*@size 22*@size @gray,19*@size 22*@size @gray,20*@size 22*@size @gray,
+    /* line 24 */
+    3*@size 23*@size @darkgray,4*@size 23*@size @darkgray,5*@size 23*@size @gray,6*@size 23*@size @black,7*@size 23*@size @darkblue,8*@size 23*@size @blue,9*@size 23*@size @blue,10*@size 23*@size @blue,11*@size 23*@size @blue,12*@size 23*@size @blue,13*@size 23*@size @blue,14*@size 23*@size @blue,15*@size 23*@size @lightblue,16*@size 23*@size @black,17*@size 23*@size @darkgray,18*@size 23*@size @gray,19*@size 23*@size @gray,
+    /* line 25 */
+    4*@size 24*@size @darkgray,5*@size 24*@size @black,6*@size 24*@size @black,7*@size 24*@size @darkblue,8*@size 24*@size @blue,9*@size 24*@size @blue,10*@size 24*@size @blue,11*@size 24*@size @blue,12*@size 24*@size @blue,13*@size 24*@size @blue,14*@size 24*@size @blue,15*@size 24*@size @lightblue,16*@size 24*@size @black,17*@size 24*@size @black,18*@size 24*@size @gray,
+    /* line 26 */
+    4*@size 25*@size @darkgray,5*@size 25*@size @gray,6*@size 25*@size @black,7*@size 25*@size @darkyellow,8*@size 25*@size @blue,9*@size 25*@size @yellow,10*@size 25*@size @blue,11*@size 25*@size @yellow,12*@size 25*@size @blue,13*@size 25*@size @yellow,14*@size 25*@size @blue,15*@size 25*@size @yellow,16*@size 25*@size @black,17*@size 25*@size @darkgray,18*@size 25*@size @gray,
+    /* line 27 */
+    4*@size 26*@size @darkgray,5*@size 26*@size @black,6*@size 26*@size @black,7*@size 26*@size @darkyellow,8*@size 26*@size @darkyellow,9*@size 26*@size @yellow,10*@size 26*@size @darkyellow,11*@size 26*@size @yellow,12*@size 26*@size @darkyellow,13*@size 26*@size @yellow,14*@size 26*@size @darkyellow,15*@size 26*@size @yellow,16*@size 26*@size @black,17*@size 26*@size @black,18*@size 26*@size @gray,
+    /* line 28 */
+    4*@size 27*@size @black,5*@size 27*@size @black,6*@size 27*@size @black,7*@size 27*@size @darkyellow,8*@size 27*@size @blue,9*@size 27*@size @yellow,10*@size 27*@size @blue,11*@size 27*@size @yellow,12*@size 27*@size @blue,13*@size 27*@size @yellow,14*@size 27*@size @blue,15*@size 27*@size @yellow,16*@size 27*@size @black,17*@size 27*@size @black,18*@size 27*@size @black,
+    /* line 29 */
+    4*@size 28*@size @black,5*@size 28*@size @black,6*@size 28*@size @black,7*@size 28*@size @darkblue,8*@size 28*@size @blue,9*@size 28*@size @lightblue,10*@size 28*@size @black,11*@size 28*@size @black,12*@size 28*@size @black,13*@size 28*@size @darkblue,14*@size 28*@size @blue,15*@size 28*@size @lightblue,16*@size 28*@size @black,17*@size 28*@size @black,18*@size 28*@size @black,
+    /* line 30 */
+    4*@size 29*@size @black,5*@size 29*@size @black,6*@size 29*@size @black,7*@size 29*@size @darkblue,8*@size 29*@size @blue,9*@size 29*@size @lightblue,10*@size 29*@size @black,11*@size 29*@size @black,12*@size 29*@size @black,13*@size 29*@size @darkblue,14*@size 29*@size @blue,15*@size 29*@size @lightblue,16*@size 29*@size @black,17*@size 29*@size @black,18*@size 29*@size @black,
+    /* line 31 */
+    4*@size 30*@size @black,5*@size 30*@size @black,6*@size 30*@size @black,7*@size 30*@size @darkblue,8*@size 30*@size @blue,9*@size 30*@size @lightblue,10*@size 30*@size @black,11*@size 30*@size @black,12*@size 30*@size @black,13*@size 30*@size @darkblue,14*@size 30*@size @blue,15*@size 30*@size @lightblue,16*@size 30*@size @black,17*@size 30*@size @black,18*@size 30*@size @black,
+    /* line 32*/
+    4*@size 31*@size @black,5*@size 31*@size @black,6*@size 31*@size @black,7*@size 31*@size @darkblue,8*@size 31*@size @blue,9*@size 31*@size @lightblue,10*@size 31*@size @black,11*@size 31*@size @black,12*@size 31*@size @black,13*@size 31*@size @darkblue,14*@size 31*@size @blue,15*@size 31*@size @lightblue,16*@size 31*@size @black,17*@size 31*@size @black,18*@size 31*@size @black,
+    /* line 33 */
+    4*@size 32*@size @black,5*@size 32*@size @black,6*@size 32*@size @black,7*@size 32*@size @darkblue,8*@size 32*@size @blue,9*@size 32*@size @lightblue,10*@size 32*@size @black,11*@size 32*@size @black,12*@size 32*@size @black,13*@size 32*@size @darkblue,14*@size 32*@size @blue,15*@size 32*@size @lightblue,16*@size 32*@size @black,17*@size 32*@size @black,18*@size 32*@size @black,
+    /* line 34 */
+    4*@size 33*@size @black,5*@size 33*@size @black,6*@size 33*@size @black,7*@size 33*@size @darkgray,8*@size 33*@size @darkgray,9*@size 33*@size @gray,10*@size 33*@size @black,11*@size 33*@size @black,12*@size 33*@size @black,13*@size 33*@size @darkgray,14*@size 33*@size @darkgray,15*@size 33*@size @gray,16*@size 33*@size @black,17*@size 33*@size @black,18*@size 33*@size @black,
+    /* line 35 */
+    4*@size 34*@size @black,5*@size 34*@size @black,7*@size 34*@size @darkgray,8*@size 34*@size @darkgray,9*@size 34*@size @gray,10*@size 34*@size @black,11*@size 34*@size @black,12*@size 34*@size @black,13*@size 34*@size @darkgray,14*@size 34*@size @darkgray,15*@size 34*@size @gray,17*@size 34*@size @black,18*@size 34*@size @black,
+    /* line 36 */
+    4*@size 35*@size @black,7*@size 35*@size @darkgray,8*@size 35*@size @darkgray,9*@size 35*@size @gray,11*@size 35*@size @black,13*@size 35*@size @darkgray,14*@size 35*@size @darkgray,15*@size 35*@size @gray,18*@size 35*@size @black,
+    /* line 37 */
+    6*@size 36*@size @darkgray,7*@size 36*@size @darkgray,8*@size 36*@size @darkgray,9*@size 36*@size @gray,11*@size 36*@size @black,13*@size 36*@size @darkgray,14*@size 36*@size @darkgray,15*@size 36*@size @darkgray,16*@size 36*@size @gray,
+    /* line 38 */
+    5*@size 37*@size @darkgray,6*@size 37*@size @darkgray,7*@size 37*@size @darkgray,8*@size 37*@size @darkgray,9*@size 37*@size @gray,11*@size 37*@size @black,13*@size 37*@size @darkgray,14*@size 37*@size @darkgray,15*@size 37*@size @darkgray,16*@size 37*@size @darkgray,17*@size 37*@size @gray
+    ;
+}

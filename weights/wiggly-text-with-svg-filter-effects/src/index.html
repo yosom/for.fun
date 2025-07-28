@@ -1,0 +1,28 @@
+<svg aria-hidden="true" class="visually-hidden">
+  <defs>
+    <filter id="title-wiggle">
+      <feTurbulence id="turbulence" baseFrequency="0.01" numOctaves="1" type="fractalNoise" result="turbulence" />
+      <feDisplacementMap id="displacement" in="SourceGraphic" in2="turbulence" scale="30" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
+
+<div class="demo">
+  <div class="container">
+    <h1 class="title">Wiggly Text in a Big Title</h1>
+  </div>
+  <div class="controls">
+    <div class="control">
+      <label class="label" for="scale">Scale: <span id="scaleOuput">30</span></label>
+      <input id="scale" type="range" min="0" max="100" step="1" value="30">
+    </div>
+    <div class="control">
+      <label class="label" for="scale">Base Frequency: <span id="baseFrequencyOuput">0.01</span></label>
+      <input id="baseFrequency" type="range" min="0" max="0.05" step="0.001" value="0.01">
+    </div>
+    <div class="control">
+      <label class="label" for="scale">Octaves: <span id="octavesOuput">1</span></label>
+      <input id="octaves" type="range" min="0" max="4" step="1" value="1">
+    </div>
+  </div>
+</div>

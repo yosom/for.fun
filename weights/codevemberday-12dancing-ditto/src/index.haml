@@ -1,0 +1,16 @@
+.container
+  .subcontainer
+    .ditto.one
+      - (1...1156).each do
+        %div.pixels
+    .ditto.two
+      - (1...1156).each do
+        %div.pixels
+    .ditto.three
+      - (1...1156).each do
+        %div.pixels
+    .ditto.four
+      - (1...1156).each do
+        %div.pixels        
+%audio{ :autoplay => 'true' }
+  %source{ :src => 'https://robindelaporte.fr/song.mp3' }

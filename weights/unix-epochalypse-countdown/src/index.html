@@ -1,0 +1,107 @@
+<main>
+	<div class="intro">
+		<h1 class="intro__headline">The Unix Epochalypse</h1>
+		<p class="intro__subheadline">Happening In</p>
+		<div class="cd">
+			<div class="cd__unit-group">
+				<div class="cd__unit">
+					<div class="cd__digits">
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+					</div>
+					<div class="cd__unit-label">Year(s)</div>
+				</div>
+				<div class="cd__unit">
+					<div class="cd__digits">
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+					</div>
+					<div class="cd__unit-label">Month(s)</div>
+				</div>
+				<div class="cd__unit">
+					<div class="cd__digits">
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+					</div>
+					<div class="cd__unit-label">Day(s)</div>
+				</div>
+			</div>
+			<div class="cd__unit-group">
+				<div class="cd__unit">
+					<div class="cd__digits">
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+					</div>
+					<div class="cd__unit-label">Hour(s)</div>
+				</div>
+				<div class="cd__unit">
+					<div class="cd__digits">
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+					</div>
+					<div class="cd__unit-label">Minute(s)</div>
+				</div>
+				<div class="cd__unit">
+					<div class="cd__digits">
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+						<div class="cd__digit" data-col>
+							<div data-pos="next">-</div>
+							<div data-pos="prev">-</div>
+						</div>
+					</div>
+					<div class="cd__unit-label">Second(s)</div>
+				</div>
+			</div>
+			<div class="cd__progress">
+				<span class="cd__unit-label">Seconds Since Unix Epoch</span><br>
+				<strong data-progress>-</strong>
+			</div>
+		</div>
+		<button id="info-btn" class="btn" type="button">
+			<span class="btn__text">?</span>
+		</button>
+	</div>
+	<div id="info" class="content">
+		<div class="content__wrap">
+			<h2>What’s the Unix Epochalypse?</h2>
+			<p>The Unix Epochalypse (or the <a href="https://en.wikipedia.org/wiki/Year_2038_problem" target="_blank" ref="noopener noreferrer">Year 2038 problem</a>) is the day clocks on a number of systems will flip from <strong><time datetime="2038-01-19 03:14:08">January 19, 2038 3:14:08 AM UTC</time></strong> to <strong><time datetime="1901-12-13 20:45:52">December 13, 1901 8:45:52 PM UTC</time></strong>. This is because of the use of a 32-bit signed integer for the current seconds since midnight UTC on <time datetime="1970-01-01 00:00:00">January 1, 1970</time>, the Unix epoch. Values only from -2,147,483,648 to 2,147,483,647 are stored. When finally reaching the limit, it’ll be the seconds before the epoch starting at the lowest supported integer.</p>
+			<p>If you have yet to make the complete shift to 64-bit, expect some strange things to happen later. The age of 32-bit is over. The time of 64-bit has come!</p>
+		</div>
+	</div>
+</main>
+<footer>
+	Made by <a href="https://twitter.com/jonkantner" target="_blank">@jonkantner</a>
+</footer>

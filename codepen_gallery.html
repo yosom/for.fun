@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dot设备 - CodePen风格预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-preview {
+            width: 100%;
+            height: 160px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .project-info {
+            padding: 12px;
+        }
+
+        .project-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 6px;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            white-space: nowrap !important;
+            max-width: 100% !important;
+            display: block !important;
+            width: 100% !important;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            font-size: 0.85em;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            white-space: nowrap !important;
+            max-width: 100% !important;
+            display: block !important;
+            width: 100% !important;
+        }
+
+        .project-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1600px) {
+            .projects-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .projects-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-preview {
+                height: 160px;
+            }
+        }
+
+        .no-projects {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            margin-top: 50px;
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+
+        .status-bar.show {
+            display: block;
+        }
+
+        .status-success {
+            border-left: 4px solid #28a745;
+        }
+
+        .status-error {
+            border-left: 4px solid #dc3545;
+        }
+
+        .status-info {
+            border-left: 4px solid #17a2b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 Dot设备预览</h1>
+        </div>
+
+        <div id="projectsGrid" class="projects-grid">
+            <div class="loading">
+                <div class="spinner"></div>
+                正在加载项目...
+            </div>
+        </div>
+    </div>
+
+    <div id="statusBar" class="status-bar">
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        // 全局变量
+        let projects = [];
+        const statusBar = document.getElementById('statusBar');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // 显示状态信息
+        function showStatus(message, type = 'info') {
+            statusMessage.textContent = message;
+            statusBar.className = `status-bar show status-${type}`;
+
+            setTimeout(() => {
+                statusBar.classList.remove('show');
+            }, 3000);
+        }
+
+        // 截断过长的文件夹名称
+        function truncateFolderName(name, maxLength = 15) {
+            console.log('截断文件夹名称:', name, '长度:', name.length);
+            if (name.length <= maxLength) {
+                return name;
+            }
+            const truncated = name.substring(0, maxLength) + '...';
+            console.log('截断后:', truncated);
+            return truncated;
+        }
+
+        // 截断过长的描述文本
+        function truncateDescription(description, maxLength = 25) {
+            if (!description || description.length <= maxLength) {
+                return description;
+            }
+            return description.substring(0, maxLength) + '...';
+        }
+
+        // 配置选项：是否显示项目描述
+        const SHOW_DESCRIPTION = false; // 设置为 false 可以完全隐藏描述
+
+        // 获取项目列表
+        async function loadProjects() {
+            try {
+                const response = await fetch('/api/projects');
+                if (!response.ok) {
+                    throw new Error('获取项目列表失败');
+                }
+
+                projects = await response.json();
+                renderProjects();
+            } catch (error) {
+                console.error('加载项目失败:', error);
+                document.getElementById('projectsGrid').innerHTML = `
+                    <div class="no-projects">
+                        <p>❌ 加载项目失败: ${error.message}</p>
+                        <p>请确保weights文件夹存在且包含有效的项目</p>
+                    </div>
+                `;
+            }
+        }
+
+        // 渲染项目列表
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            console.log('开始渲染项目列表，项目数量:', projects.length);
+
+            if (projects.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-projects">
+                        <p>📁 未找到项目</p>
+                        <p>请在weights文件夹中添加项目</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = projects.map(project => {
+                const truncatedName = truncateFolderName(project.name);
+                const truncatedDesc = truncateDescription(project.description || '点击查看预览');
+                console.log('项目:', project.name, '截断后:', truncatedName);
+                console.log('描述:', project.description, '截断后:', truncatedDesc);
+                return `
+                <div class="project-card">
+                    <div class="project-preview">
+                        <iframe src="/api/project-iframe/${project.name}" title="${project.name}"></iframe>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title" title="${project.name}">${truncatedName}</div>
+                        ${SHOW_DESCRIPTION ? `<div class="project-description" title="${project.description || '点击查看预览'}">
+                            ${truncatedDesc}
+                        </div>` : ''}
+                        <div class="project-actions">
+                            <a href="/preview/${project.name}" class="btn btn-primary">
+                                🔍 详细预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+
+
+
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('页面加载完成，开始加载项目...');
+            loadProjects();
+        });
+
+        // 添加键盘快捷键
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key) {
+                    case 'r':
+                        e.preventDefault();
+                        loadProjects();
+                        showStatus('🔄 重新加载项目', 'info');
+                        break;
+                }
+            }
+        });
+
+        // 页面加载时显示提示
+        console.log('文件夹名称截断功能已启用，最大长度: 15字符');
+        console.log('项目描述显示状态:', SHOW_DESCRIPTION ? '显示（截断25字符）' : '隐藏');
+        console.log('如果看不到截断效果，请按 Ctrl+F5 强制刷新页面');
+    </script>
+</body>
+
+</html>

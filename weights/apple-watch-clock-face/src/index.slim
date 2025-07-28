@@ -1,0 +1,24 @@
+- grd = 240
+- num = 12
+- min = 60
+ 
+.clock.all
+  .w-num
+    - for i in (1..num)
+      .num data-num="#{i}" #{i}
+  .w-num-g
+    - for i in (1..num)
+      - g = i * min / num
+      .num-g data-num="#{g}" #{g}
+  .grd
+    - for i in (1..grd)
+      .w-ms
+        div class="ms-#{i}"
+  .w-sec
+    .sec-needle
+  .w-min
+    .min-needle
+  .w-hour
+    .hour-needle
+
+  

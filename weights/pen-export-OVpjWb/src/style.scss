@@ -1,0 +1,79 @@
+$container: 360px;
+$pixel: '';
+
+$colors: (
+  'b': #000000,
+  'w': #ffffff,
+  'o': rgba(0, 0, 0, 0)
+);
+
+$drawing: (
+  (w w w w w w w w w w w w w w b w w w w w b w w w)
+  (w w w w w w w w w w w w b b w w w w b w b b b w)
+  (w w w w w w w w w w b w w b w w w w w b b w w w)
+  (w w w w w w w w w w w b b b b b w w w b w w w w)
+  (w w w w w w w w w w w w w w b w b b w b b b w w)
+  (w w w w w w w w w w w w w b w w w b b b b b b b)
+  (w w w w w w w w w w w w w w w w w w b b b b b b)
+  (w w w w w w w w w w w w w w w w w w w b b b w w)
+  (w w w w w w w w w w w w w w w w w w b b b b w w)
+  (w w w w w w w w w w w w w w w w w b b b b b w w)
+  (w w w w w w w w w w w w w w w b b b b b b w w w)
+  (w w w w w w w w w w w w w b b b b b b b w w w w)
+  (w w w w w w w w w w b b b b b b b b b b w w w w)
+  (w w w w w w w b b b b b b b b b b b b b w w w w)
+  (w w w w w w w b b b b b b b b b b b b b b b w w)
+  (w w w w w w b b b b b b b b b b b b b b w b w w)
+  (w w w w w w b b b b b b b b b b w b b w b w w w)
+  (w w w w w w b b b b b b b b b w w b w b w w w w)
+);
+
+@function pixel() {
+  $l: length($drawing);
+  @for $i from 1 through $l {
+    @return $container / length(nth($drawing, $i));
+  }
+}
+
+@function drawing() {
+  $l: length($drawing);
+  $sh: '';
+  
+  @for $i from 1 through $l {
+    $row: nth($drawing, $i);
+    
+    @for $j from 1 through length($row) {
+      $item: nth($row, $j);
+      
+      @if map-has-key($colors, $item) {
+        $sh:  $sh + ($j*pixel()) + ' ' + ($i*pixel()) + ' ' + map-get($colors, $item);
+      }
+      
+      @if not ($j == length($row) and $i == $l) {
+        $sh: $sh + ',';
+      }
+    }
+  }
+      
+  @return unquote($sh);
+}
+
+body {
+  background: white;
+}
+  
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $container;
+  height: $container;
+  transform: translate(-50%, -50%);
+}
+
+.drawing {
+  width: pixel();
+  height: pixel();
+  
+  box-shadow: drawing();
+}

@@ -1,0 +1,87 @@
+$t: rgba(0,0,0,0);
+$w: #fff;
+$g: #1d6;
+
+// Set the colors
+$shroom: 
+  $t, $t, $t, $t, $t, $t, #000, #000, #000, #000, #000, #000, $t, $t, $t, $t,
+  $t, $t, $t, #000, #000, #000, $w, $g, $g, $w, #000, #000, #000, $t, $t, $t,
+  $t, $t, #000, #000, $w, $w, $w, $g, $g, $w, $w, $w, #000, #000, $t, $t, 
+  $t, #000, #000, $g, $w, $w, $g, $g, $g, $g, $w, $w, $g, #000, #000, $t,
+  $t, #000, $w, $g, $g, $g, $g, $g, $g, $g, $g, $g, $g, $w, #000, $t,
+  #000, #000, $w, $w, $g, $g, $w, $w, $w, $w, $g, $g, $w, $w, #000, #000,
+  #000, $w, $w, $w, $g, $w, $w, $w, $w, $w, $w, $g, $w, $w, $w, #000,
+  #000, $w, $w, $w, $g, $w, $w, $w, $w, $w, $w, $g, $w, $w, $w, #000,
+  #000, $w, $w, $g, $g, $w, $w, $w, $w, $w, $w, $g, $g, $w, $w, #000, 
+  #000, $g, $g, $g, $g, $g, $w, $w, $w, $w, $g, $g, $g, $g, $g, #000, 
+  #000, $g, $g, #000, #000, #000, #000, #000, #000, #000, #000, #000, #000, $g, $g, #000,
+  #000, #000, #000, #000, $w, $w, #000, $w, $w, #000, $w, $w, #000, #000, #000, #000, $t, #000, #000, $w, $w, $w, #000, $w, $w, #000, $w, $w, $w, #000, #000, $t,
+  $t, $t, #000, $w, $w, $w, $w, $w, $w, $w, $w, $w, $w, #000, $t, $t,
+  $t, $t, #000, #000, $w, $w, $w, $w, $w, $w, $w, $w, #000, #000, $t, $t,
+  $t, $t, $t, #000, #000, #000, #000, #000, #000, #000, #000, #000, #000;
+
+// Set the row length
+$row: 16;
+
+// Set the "square" size
+$sz: 21;
+
+@function bit($bitarray) {
+  $colors: $bitarray;
+  $val: 0px 0px $t;
+  $h: 0; $k: 0;
+  
+  @for $i from 1 through length($colors) {
+    @if $i % $row == 0 {
+      $val: #{$val}, #{$k*$sz}px #{$h}px nth($colors, $i);
+      // Calculating of $h needs some help
+      $h: $h + $sz; $k: 0;
+    } 
+    @else {
+      $val: #{$val}, #{$k*$sz}px #{$h}px nth($colors, $i);
+    }
+    $k: $k + 1;
+  }
+  @return $val;
+}
+
+
+@mixin bitinator($a) {
+  box-shadow: bit($a);
+}
+
+.b {
+  width: #{$sz*$row}px;
+  height: #{$sz*$row}px;
+}
+
+.b:after {
+  content: '';
+  position: absolute;
+  box-sizing: border-box;
+  width: #{$sz}px;
+  height: #{$sz}px;
+  @include bitinator($shroom);
+}
+
+
+/* ========================= *
+ * Extra Stuff
+ * ========================= */
+
+body { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 100vh;
+    background: #befff7; 
+}
+
+.b:after {
+  animation: 5s moveit linear infinite;
+}
+@keyframes moveit {
+   0%, 100% { transform: translateX(-20vw); }
+   50% { transform: translateX(20vw); }
+}

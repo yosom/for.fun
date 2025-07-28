@@ -1,0 +1,122 @@
+  <body>
+    <main>
+      <div class="content">
+        <div class="slider-playlist">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="https://github.com/user-attachments/assets/d80e6b68-b67a-4e27-86ee-e00581883d5c" />
+                <h1>Syn Cole</h1>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://github.com/user-attachments/assets/9240f7ff-1b8e-4e62-a2d1-df78b285c7e0" />
+                <h1>Clarx & Harddope</h1>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://github.com/user-attachments/assets/6e5ba953-49c5-4634-a1c5-4caf310cba86" />
+                <h1>Neffex</h1>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://github.com/user-attachments/assets/a2ca0dfd-e53f-4e79-b8b0-288847e59b9a" />
+                <h1>Patrick Patrikios</h1>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://github.com/user-attachments/assets/b286d7ff-52a1-452d-9cd9-5920c937b16e" />
+                <h1>Besomorph & Coopex</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="playlist">
+            <div class="playlist-item">
+              <img
+                src="https://github.com/user-attachments/assets/d80e6b68-b67a-4e27-86ee-e00581883d5c"
+                alt="" />
+              <div class="song">
+                <p>Syn Cole</p>
+                <p>Feel Good</p>
+              </div>
+              <p>3:01</p>
+              <i class="fa-regular fa-heart like-btn"></i>
+            </div>
+            <div class="playlist-item">
+              <img
+                src="https://github.com/user-attachments/assets/9240f7ff-1b8e-4e62-a2d1-df78b285c7e0"
+                alt="" />
+              <div class="song">
+                <p>Clarx & Harddope</p>
+                <p>Castle</p>
+              </div>
+              <p>2:38</p>
+              <i class="fa-regular fa-heart like-btn"></i>
+            </div>
+            <div class="playlist-item">
+              <img
+                src="https://github.com/user-attachments/assets/6e5ba953-49c5-4634-a1c5-4caf310cba86"
+                alt="" />
+              <div class="song">
+                <p>Neffex</p>
+                <p>Play Dead</p>
+              </div>
+              <p>3:31</p>
+              <i class="fa-regular fa-heart like-btn"></i>
+            </div>
+            <div class="playlist-item">
+              <img
+                src="https://github.com/user-attachments/assets/a2ca0dfd-e53f-4e79-b8b0-288847e59b9a"
+                alt="" />
+              <div class="song">
+                <p>Patrick Patrikios</p>
+                <p>Know Myself</p>
+              </div>
+              <p>3:23</p>
+              <i class="fa-solid fa-heart like-btn"></i>
+            </div>
+            <div class="playlist-item">
+              <img
+                src="https://github.com/user-attachments/assets/b286d7ff-52a1-452d-9cd9-5920c937b16e"
+                alt="" />
+              <div class="song">
+                <p>Besomorph & Coopex</p>
+                <p>Redemption</p>
+              </div>
+              <p>2:37</p>
+              <i class="fa-regular fa-heart like-btn"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="player">
+          <audio
+            id="audioPlayer"
+            src="song-list/AfricanFella-CumbiaDeli.mp3"
+            type="audio/mpeg"></audio>
+
+          <div class="controls">
+            <i class="fa-solid fa-shuffle" id="shuffleBtn"></i>
+            <i class="fa-solid fa-backward" id="prevBtn"></i>
+            <button id="playPauseBtn">
+              <i class="fa-solid fa-play" id="playPauseIcon"></i>
+            </button>
+            <i class="fa-solid fa-forward" id="nextBtn"></i>
+            <div class="volume">
+              <i class="fa-solid fa-volume-high"></i>
+              <input
+                type="range"
+                id="volume-range"
+                min="0"
+                max="100"
+                value="100" />
+            </div>
+          </div>
+
+          <input type="range" value="0" id="progress-bar" />
+        </div>
+      </div>
+    </main>
+  </body>

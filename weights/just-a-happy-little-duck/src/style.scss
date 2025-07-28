@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  background: hsl(240, 90, 95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.water {
+  position: absolute;
+  height: 50vh;
+  width: 100%;
+  background: hsl(240, 100, 50);
+  left: 0;
+  top: 64%;
+}
+
+.duck {
+  width: 1rem;
+  height: 1rem;
+  background: hsl(0,0,0);
+  
+  box-shadow: 1rem 0 hsl(0,0,0),
+    2rem 0 hsl(0,0,0),
+    -1rem 0 hsl(0,0,0),
+    -2rem 0 hsl(0,0,0),
+    -3rem 1rem hsl(0,0,0),
+    3rem 1rem hsl(0,0,0),
+    -3rem 2rem hsl(0,0,0),
+    3rem 2rem hsl(0,0,0),
+    -3rem 3rem hsl(0,0,0),
+    3rem 3rem hsl(0,0,0),
+    
+    -1rem 2rem hsl(0,0,0),
+    //-1rem 3rem hsl(0,0,0), //eyes
+    
+    
+    3rem 4rem hsl(0,0,0),
+    -3rem 4rem hsl(0,0,0),
+    3rem 5rem hsl(0,0,0),
+    -3rem 5rem hsl(0,0,0),
+    -2rem 6rem hsl(0,0,0),
+    -2rem 7rem hsl(0,0,0),
+    -1rem 8rem hsl(0,0,0),
+    0 8rem hsl(0,0,0),
+    1rem 8rem hsl(0,0,0),
+    2rem 8rem hsl(0,0,0),
+    3rem 8rem hsl(0,0,0),
+    4rem 8rem hsl(0,0,0),
+    5rem 7rem hsl(0,0,0),
+    6rem 6rem hsl(0,0,0),
+    4rem 6rem hsl(0,0,0),
+    
+    -4rem 4rem hsl(30,100,50),//beak
+    -5rem 4rem hsl(30,100,50),
+    
+    0 9rem hsl(0,0,0), //feet
+    0 10rem hsl(0,0,0),
+    -1rem 10rem hsl(0,0,0),
+    3rem 9rem hsl(0,0,0),
+    3rem 10rem hsl(0,0,0),
+    2rem 10rem hsl(0,0,0),
+    ;
+  
+  animation: foo ease-in-out 2s infinite;
+}
+
+@keyframes foo {
+  0% {
+    transform: translateY(0px);
+  }
+  
+  50% {
+    transform: translateY(-20px);
+  }
+  
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -1,0 +1,497 @@
+$pixel: 10px;
+
+$colors: (
+  1: #373938,
+  2: #332cb7,
+  3: #1c73a7,
+  4: #87d5f3,
+  5: #e5b460,
+  6: #f8f296,
+  7: #ffffff
+);
+
+@function p($x, $y, $color) {
+  @return ($x * $pixel) ($y * $pixel) $color;
+}
+
+@function get-color($index) {
+  @return map-get($map: $colors, $key: $index);
+}
+
+@function generate-line-indexes($y, $color-indexes) {
+  $color-indexes: if(
+    type-of($color-indexes) != list,
+    ($color-indexes),
+    $color-indexes
+  );
+  $index: 0;
+  $result: "";
+
+  @each $color in $color-indexes {
+    $result: $result +
+      p(
+        $index,
+        $y,
+        map-get(
+          $map: $colors,
+          $key: $color
+        )
+      ) +
+      ", ";
+    $index: $index + 1;
+  }
+
+  // remove last comma
+  @return unquote(str-slice($result, 1, -3));
+}
+
+body {
+  background: #0a0a0a;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.part {
+  position: relative;
+  height: $pixel * 10;
+  width: $pixel * 10;
+  //border: 1px solid rgba(128, 128, 128, 0.45);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $pixel;
+    height: $pixel;
+  }
+}
+
+.part-1::before {
+  background: get-color(2);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 2 2 2 3 3 3 3 3 3 3),
+    generate-line-indexes($y: 1, $color-indexes: 3 2 2 2 4 3 3 3 3 3),
+    generate-line-indexes($y: 2, $color-indexes: 7 3 3 4 3 3 6 3 3 7),
+    generate-line-indexes($y: 3, $color-indexes: 7 7 3 3 3 3 3 3 6 3),
+    generate-line-indexes($y: 4, $color-indexes: 4 7 3 3 2 2 3 3 3 6),
+    generate-line-indexes($y: 5, $color-indexes: 4 7 7 3 3 2 2 2 2 3),
+    generate-line-indexes($y: 6, $color-indexes: 3 4 7 7 7 3 3 2 3 3),
+    generate-line-indexes($y: 7, $color-indexes: 4 6 4 4 7 7 3 3 3 7),
+    generate-line-indexes($y: 8, $color-indexes: 4 3 6 4 4 7 7 7 7 7),
+    generate-line-indexes($y: 9, $color-indexes: 4 4 3 6 4 4 4 4 4 4);
+}
+
+.part-2::before {
+  background: get-color(7);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 7 1 7 2 2 2 2 2 2 2),
+    generate-line-indexes($y: 1, $color-indexes: 7 1 7 7 6 6 7 3 3 3),
+    generate-line-indexes($y: 2, $color-indexes: 7 1 7 6 6 6 6 7 3 3),
+    generate-line-indexes($y: 3, $color-indexes: 7 1 7 6 5 6 6 7 3 7),
+    generate-line-indexes($y: 4, $color-indexes: 7 1 7 6 6 6 6 7 7 7),
+    generate-line-indexes($y: 5, $color-indexes: 7 1 7 2 6 6 2 2 7 4),
+    generate-line-indexes($y: 6, $color-indexes: 7 1 7 3 3 3 7 7 4 3),
+    generate-line-indexes($y: 7, $color-indexes: 7 1 7 7 7 7 4 4 4 6),
+    generate-line-indexes($y: 8, $color-indexes: 7 1 1 7 4 4 4 4 6 4),
+    generate-line-indexes($y: 9, $color-indexes: 7 1 1 7 7 6 4 4 4 3);
+}
+
+.part-3::before {
+  background: get-color(2);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 2 2 2 2 2 2 2 2 2 2),
+    generate-line-indexes($y: 1, $color-indexes: 3 7 7 7 7 7 7 7 7 7),
+    generate-line-indexes($y: 2, $color-indexes: 7 7 4 4 4 4 3 3 3 3),
+    generate-line-indexes($y: 3, $color-indexes: 7 4 3 3 3 3 4 6 6 6),
+    generate-line-indexes($y: 4, $color-indexes: 3 3 3 3 3 6 6 6 4 4),
+    generate-line-indexes($y: 5, $color-indexes: 3 6 4 4 4 6 4 4 4 4),
+    generate-line-indexes($y: 6, $color-indexes: 6 4 4 3 6 6 4 7 7 7),
+    generate-line-indexes($y: 7, $color-indexes: 4 4 3 6 6 6 7 3 3 3),
+    generate-line-indexes($y: 8, $color-indexes: 3 3 3 4 4 7 3 3 3 4),
+    generate-line-indexes($y: 9, $color-indexes: 7 4 4 7 7 3 3 4 4 3);
+}
+
+.part-4::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 2 2 2 3 3 7 6 6),
+    generate-line-indexes($y: 1, $color-indexes: 7 3 2 2 3 3 3 3 7 6),
+    generate-line-indexes($y: 2, $color-indexes: 3 4 4 4 4 4 3 3 2 7),
+    generate-line-indexes($y: 3, $color-indexes: 6 6 4 4 4 4 4 4 7 2),
+    generate-line-indexes($y: 4, $color-indexes: 4 4 6 6 3 6 6 6 6 7),
+    generate-line-indexes($y: 5, $color-indexes: 4 4 4 4 4 3 3 4 4 4),
+    generate-line-indexes($y: 6, $color-indexes: 7 4 4 4 4 4 4 3 4 4),
+    generate-line-indexes($y: 7, $color-indexes: 7 7 7 4 4 4 4 3 3 4),
+    generate-line-indexes($y: 8, $color-indexes: 3 3 7 4 6 4 4 4 3 3),
+    generate-line-indexes($y: 9, $color-indexes: 4 4 3 7 4 6 4 4 4 3);
+}
+
+.part-5::before {
+  background: get-color(6);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 6 6 6 2 2 2 2 2 2 3),
+    generate-line-indexes($y: 1, $color-indexes: 6 6 7 3 2 2 2 2 2 3),
+    generate-line-indexes($y: 2, $color-indexes: 7 7 2 3 2 3 3 3 2 2),
+    generate-line-indexes($y: 3, $color-indexes: 2 3 3 2 3 7 7 7 3 2),
+    generate-line-indexes($y: 4, $color-indexes: 2 2 3 3 7 6 6 6 7 3),
+    generate-line-indexes($y: 5, $color-indexes: 7 2 2 7 6 6 6 6 6 7),
+    generate-line-indexes($y: 6, $color-indexes: 4 7 2 7 6 5 5 7 6 6),
+    generate-line-indexes($y: 7, $color-indexes: 4 4 7 7 6 6 7 6 4 6),
+    generate-line-indexes($y: 8, $color-indexes: 4 4 7 7 7 6 6 4 6 7),
+    generate-line-indexes($y: 9, $color-indexes: 3 4 3 7 4 7 7 7 7 3);
+}
+
+.part-6::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 4 7 6 6 6 6 6 5),
+    generate-line-indexes($y: 1, $color-indexes: 3 4 7 6 6 6 6 5 5 5),
+    generate-line-indexes($y: 2, $color-indexes: 3 4 7 6 6 6 5 5 5 6),
+    generate-line-indexes($y: 3, $color-indexes: 3 4 7 6 6 6 5 5 5 6),
+    generate-line-indexes($y: 4, $color-indexes: 4 4 7 6 6 6 5 5 5 6),
+    generate-line-indexes($y: 5, $color-indexes: 3 4 4 7 6 6 6 5 5 5),
+    generate-line-indexes($y: 6, $color-indexes: 7 3 4 7 6 6 6 5 5 5),
+    generate-line-indexes($y: 7, $color-indexes: 7 3 4 4 7 6 6 6 5 5),
+    generate-line-indexes($y: 8, $color-indexes: 4 4 3 4 7 7 6 6 6 6),
+    generate-line-indexes($y: 9, $color-indexes: 3 4 4 4 3 3 7 6 6 6);
+}
+
+.part-7::before {
+  background: get-color(5);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 5 6 6 3 3),
+    generate-line-indexes($y: 1, $color-indexes: 6 6 6 6 3),
+    generate-line-indexes($y: 2, $color-indexes: 6 6 6 6 6),
+    generate-line-indexes($y: 3, $color-indexes: 6 6 6 6 6),
+    generate-line-indexes($y: 4, $color-indexes: 6 6 6 5 6),
+    generate-line-indexes($y: 5, $color-indexes: 6 6 5 6 6),
+    generate-line-indexes($y: 6, $color-indexes: 5 5 6 6 6),
+    generate-line-indexes($y: 7, $color-indexes: 5 6 6 6 3),
+    generate-line-indexes($y: 8, $color-indexes: 6 6 3 3 7),
+    generate-line-indexes($y: 9, $color-indexes: 6 3 7 7 3);
+}
+
+.part-8::before {
+  background: get-color(4);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 4 2 2 4 4 6 6 4 6 6),
+    generate-line-indexes($y: 1, $color-indexes: 4 4 4 2 2 4 4 4 7 3),
+    generate-line-indexes($y: 2, $color-indexes: 3 6 4 4 4 2 2 7 1 7),
+    generate-line-indexes($y: 3, $color-indexes: 3 3 3 4 4 4 4 4 7 1),
+    generate-line-indexes($y: 4, $color-indexes: 4 4 3 3 6 3 3 3 7 1),
+    generate-line-indexes($y: 5, $color-indexes: 7 4 4 4 4 4 4 4 7 1),
+    generate-line-indexes($y: 6, $color-indexes: 2 7 7 7 7 4 4 7 7 1),
+    generate-line-indexes($y: 7, $color-indexes: 7 6 7 2 2 7 7 6 6 7),
+    generate-line-indexes($y: 8, $color-indexes: 6 5 6 3 2 7 6 6 6 6),
+    generate-line-indexes($y: 9, $color-indexes: 7 6 7 3 3 7 6 6 5 6);
+}
+
+.part-9::before {
+  background: get-color(7);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 7 1 1 1 7 4 4 7 7 6),
+    generate-line-indexes($y: 1, $color-indexes: 7 1 2 1 7 7 7 3 7 6),
+    generate-line-indexes($y: 2, $color-indexes: 7 1 2 1 7 4 4 7 7 7),
+    generate-line-indexes($y: 3, $color-indexes: 7 1 2 1 7 4 7 3 3 3),
+    generate-line-indexes($y: 4, $color-indexes: 7 1 2 1 7 2 3 3 2 2),
+    generate-line-indexes($y: 5, $color-indexes: 7 1 2 1 7 2 3 2 2 3),
+    generate-line-indexes($y: 6, $color-indexes: 1 1 2 1 7 2 3 3 3 3),
+    generate-line-indexes($y: 7, $color-indexes: 1 1 2 1 7 2 3 3 3 2),
+    generate-line-indexes($y: 8, $color-indexes: 1 1 2 1 7 2 3 2 2 3),
+    generate-line-indexes($y: 9, $color-indexes: 1 1 2 1 7 2 3 2 3 7);
+}
+
+.part-10::before {
+  background: get-color(6);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 6 6 7 3 3 4 4 3 3 3),
+    generate-line-indexes($y: 1, $color-indexes: 5 6 6 7 3 3 3 3 4 4),
+    generate-line-indexes($y: 2, $color-indexes: 6 6 7 3 3 3 3 4 4 4),
+    generate-line-indexes($y: 3, $color-indexes: 7 7 3 3 4 3 3 4 4 2),
+    generate-line-indexes($y: 4, $color-indexes: 3 2 3 4 3 3 6 4 4 2),
+    generate-line-indexes($y: 5, $color-indexes: 2 2 3 4 3 3 6 4 4 2),
+    generate-line-indexes($y: 6, $color-indexes: 2 3 3 4 3 3 3 6 4 4),
+    generate-line-indexes($y: 7, $color-indexes: 2 7 7 7 7 3 3 3 6 4),
+    generate-line-indexes($y: 8, $color-indexes: 7 6 6 6 7 7 2 3 3 6),
+    generate-line-indexes($y: 9, $color-indexes: 6 6 6 6 6 6 2 2 3 3);
+}
+
+.part-11::before {
+  background: get-color(4);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 4 4 3 6 4 6 4 4 4 3),
+    generate-line-indexes($y: 1, $color-indexes: 4 4 4 4 6 4 6 4 4 2),
+    generate-line-indexes($y: 2, $color-indexes: 4 4 4 6 4 4 6 4 4 2),
+    generate-line-indexes($y: 3, $color-indexes: 3 7 4 6 6 6 4 4 4 2),
+    generate-line-indexes($y: 4, $color-indexes: 3 7 4 4 4 4 4 4 2 2),
+    generate-line-indexes($y: 5, $color-indexes: 3 2 7 7 4 4 2 2 2 4),
+    generate-line-indexes($y: 6, $color-indexes: 2 3 2 2 7 7 4 4 4 4),
+    generate-line-indexes($y: 7, $color-indexes: 4 4 3 3 2 4 4 4 3 3),
+    generate-line-indexes($y: 8, $color-indexes: 4 4 4 4 4 4 6 6 4 3),
+    generate-line-indexes($y: 9, $color-indexes: 3 4 4 6 6 6 6 4 4 3);
+}
+
+.part-12::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 3 7 3 4 4 4 3 3),
+    generate-line-indexes($y: 1, $color-indexes: 3 3 4 7 3 3 3 4 4 4),
+    generate-line-indexes($y: 2, $color-indexes: 3 3 4 7 4 3 3 3 3 3),
+    generate-line-indexes($y: 3, $color-indexes: 3 4 4 7 4 4 4 4 4 3),
+    generate-line-indexes($y: 4, $color-indexes: 4 4 3 3 3 3 3 3 4 4),
+    generate-line-indexes($y: 5, $color-indexes: 4 3 3 3 6 6 6 3 3 4),
+    generate-line-indexes($y: 6, $color-indexes: 3 3 6 6 6 6 6 6 3 3),
+    generate-line-indexes($y: 7, $color-indexes: 6 6 4 4 4 4 4 3 3 3),
+    generate-line-indexes($y: 8, $color-indexes: 3 4 4 3 3 3 4 3 3 4),
+    generate-line-indexes($y: 9, $color-indexes: 3 3 3 3 4 3 4 3 4 4);
+}
+
+.part-13::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 3 4 4 3 3 7 7 7),
+    generate-line-indexes($y: 1, $color-indexes: 4 4 3 3 3 4 3 3 3 3),
+    generate-line-indexes($y: 2, $color-indexes: 2 4 4 3 3 3 4 3 3 3),
+    generate-line-indexes($y: 3, $color-indexes: 3 2 4 4 3 3 3 3 3 2),
+    generate-line-indexes($y: 4, $color-indexes: 3 3 2 4 3 3 3 3 3 3),
+    generate-line-indexes($y: 5, $color-indexes: 4 3 4 4 3 3 4 4 4 4),
+    generate-line-indexes($y: 6, $color-indexes: 4 3 4 3 3 4 4 4 4 6),
+    generate-line-indexes($y: 7, $color-indexes: 3 4 3 3 4 6 6 6 6 4),
+    generate-line-indexes($y: 8, $color-indexes: 3 4 3 4 6 4 4 4 4 4),
+    generate-line-indexes($y: 9, $color-indexes: 3 2 4 6 7 4 6 6 6 6);
+}
+
+.part-14::before {
+  background: get-color(7);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 7 7 3 3 3),
+    generate-line-indexes($y: 1, $color-indexes: 3 3 3 2 2),
+    generate-line-indexes($y: 2, $color-indexes: 3 3 2 2 3),
+    generate-line-indexes($y: 3, $color-indexes: 2 2 2 3 4),
+    generate-line-indexes($y: 4, $color-indexes: 3 3 4 4 6),
+    generate-line-indexes($y: 5, $color-indexes: 4 4 6 6 4),
+    generate-line-indexes($y: 6, $color-indexes: 6 6 4 4 6),
+    generate-line-indexes($y: 7, $color-indexes: 4 4 6 6 6),
+    generate-line-indexes($y: 8, $color-indexes: 6 6 6 4 4),
+    generate-line-indexes($y: 9, $color-indexes: 6 6 4 6 6);
+}
+
+.part-15::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 3 3 3 7 6 6 6 6),
+    generate-line-indexes($y: 1, $color-indexes: 4 4 4 4 3 3 7 6 6 7),
+    generate-line-indexes($y: 2, $color-indexes: 3 3 3 3 4 4 3 7 7 2),
+    generate-line-indexes($y: 3, $color-indexes: 2 2 2 2 2 3 4 7 1 2),
+    generate-line-indexes($y: 4, $color-indexes: 2 7 7 7 2 2 3 7 1 1),
+    generate-line-indexes($y: 5, $color-indexes: 7 6 6 6 7 2 2 7 1 1),
+    generate-line-indexes($y: 6, $color-indexes: 6 3 3 3 6 7 2 7 1 1),
+    generate-line-indexes($y: 7, $color-indexes: 4 4 3 6 6 6 7 7 1 1),
+    generate-line-indexes($y: 8, $color-indexes: 3 3 4 3 6 6 6 7 7 1),
+    generate-line-indexes($y: 9, $color-indexes: 3 3 3 4 3 6 3 6 7 1);
+}
+
+.part-16::before {
+  background: get-color(1);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 1 1 1 1 7 2 3 3 3 7),
+    generate-line-indexes($y: 1, $color-indexes: 1 1 1 1 7 2 3 3 7 6),
+    generate-line-indexes($y: 2, $color-indexes: 1 1 1 1 7 2 4 2 7 6),
+    generate-line-indexes($y: 3, $color-indexes: 2 1 1 1 7 2 3 3 3 7),
+    generate-line-indexes($y: 4, $color-indexes: 2 2 1 1 7 7 7 7 3 3),
+    generate-line-indexes($y: 5, $color-indexes: 1 2 1 1 7 7 2 7 7 3),
+    generate-line-indexes($y: 6, $color-indexes: 1 2 2 1 7 7 2 7 1 7),
+    generate-line-indexes($y: 7, $color-indexes: 1 1 2 1 7 2 1 7 2 7),
+    generate-line-indexes($y: 8, $color-indexes: 1 1 2 1 7 2 1 7 2 1),
+    generate-line-indexes($y: 9, $color-indexes: 2 1 2 1 2 2 1 7 2 2);
+}
+
+.part-17::before {
+  background: get-color(6);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 6 6 6 6 6 6 7 2 2 2),
+    generate-line-indexes($y: 1, $color-indexes: 6 6 7 7 6 6 6 7 4 2),
+    generate-line-indexes($y: 2, $color-indexes: 6 6 5 6 6 6 6 7 4 4),
+    generate-line-indexes($y: 3, $color-indexes: 6 6 7 7 7 6 6 7 3 3),
+    generate-line-indexes($y: 4, $color-indexes: 7 6 6 6 6 6 7 3 4 4),
+    generate-line-indexes($y: 5, $color-indexes: 7 6 6 6 6 7 4 4 6 6),
+    generate-line-indexes($y: 6, $color-indexes: 3 7 7 7 7 4 6 6 6 4),
+    generate-line-indexes($y: 7, $color-indexes: 3 4 4 4 4 6 6 4 4 6),
+    generate-line-indexes($y: 8, $color-indexes: 7 3 6 6 6 4 4 4 3 6),
+    generate-line-indexes($y: 9, $color-indexes: 7 3 3 3 4 4 3 7 7 7);
+}
+
+.part-18::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 3 4 4 4 4 4 3 3),
+    generate-line-indexes($y: 1, $color-indexes: 2 2 2 3 4 3 3 3 3 4),
+    generate-line-indexes($y: 2, $color-indexes: 3 3 3 3 3 3 3 4 4 4),
+    generate-line-indexes($y: 3, $color-indexes: 3 3 3 3 3 4 4 4 4 4),
+    generate-line-indexes($y: 4, $color-indexes: 4 4 4 4 4 4 4 7 7 7),
+    generate-line-indexes($y: 5, $color-indexes: 6 6 6 7 7 7 6 6 6 6),
+    generate-line-indexes($y: 6, $color-indexes: 3 6 6 6 6 6 4 4 6 7),
+    generate-line-indexes($y: 7, $color-indexes: 6 6 4 4 4 7 7 7 7 1),
+    generate-line-indexes($y: 8, $color-indexes: 3 4 4 3 3 7 4 1 1 2),
+    generate-line-indexes($y: 9, $color-indexes: 4 4 3 7 7 1 4 2 2 2);
+}
+
+.part-19::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 4 6 4 4 4 3 4 2),
+    generate-line-indexes($y: 1, $color-indexes: 3 3 4 6 6 6 3 4 4 2),
+    generate-line-indexes($y: 2, $color-indexes: 4 3 3 4 4 4 4 4 2 4),
+    generate-line-indexes($y: 3, $color-indexes: 4 4 3 3 3 3 3 3 4 6),
+    generate-line-indexes($y: 4, $color-indexes: 7 6 6 6 6 6 6 6 6 7),
+    generate-line-indexes($y: 5, $color-indexes: 6 4 4 3 4 4 4 6 6 4),
+    generate-line-indexes($y: 6, $color-indexes: 7 7 7 7 7 7 6 4 4 4),
+    generate-line-indexes($y: 7, $color-indexes: 1 1 1 1 1 1 7 4 3 7),
+    generate-line-indexes($y: 8, $color-indexes: 2 2 2 2 2 2 1 7 7 2),
+    generate-line-indexes($y: 9, $color-indexes: 4 4 3 3 2 2 2 1 1 1);
+}
+
+.part-20::before {
+  background: get-color(2);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 2 4 6 7 4 4 6 4 4 4),
+    generate-line-indexes($y: 1, $color-indexes: 4 6 7 4 4 6 4 6 4 4),
+    generate-line-indexes($y: 2, $color-indexes: 6 7 4 6 6 4 6 4 6 7),
+    generate-line-indexes($y: 3, $color-indexes: 7 4 6 4 4 6 4 4 6 6),
+    generate-line-indexes($y: 4, $color-indexes: 6 6 4 6 6 6 6 6 1 1),
+    generate-line-indexes($y: 5, $color-indexes: 6 4 7 7 7 7 7 7 1 2),
+    generate-line-indexes($y: 6, $color-indexes: 7 7 1 1 1 1 1 1 2 2),
+    generate-line-indexes($y: 7, $color-indexes: 1 1 3 3 3 2 2 2 1 1),
+    generate-line-indexes($y: 8, $color-indexes: 2 2 3 1 1 1 1 1 1 2),
+    generate-line-indexes($y: 9, $color-indexes: 1 1 1 2 3 3 2 2 3 2);
+}
+
+.part-21::before {
+  background: get-color(2);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 4 7 7 7 7),
+    generate-line-indexes($y: 1, $color-indexes: 7 1 1 1 1),
+    generate-line-indexes($y: 2, $color-indexes: 1 1 2 2 2),
+    generate-line-indexes($y: 3, $color-indexes: 7 1 2 2 2),
+    generate-line-indexes($y: 4, $color-indexes: 1 3 2 2 2),
+    generate-line-indexes($y: 5, $color-indexes: 2 3 2 2 2),
+    generate-line-indexes($y: 6, $color-indexes: 3 2 2 2 2),
+    generate-line-indexes($y: 7, $color-indexes: 1 1 1 1 1),
+    generate-line-indexes($y: 8, $color-indexes: 2 2 3 2 3),
+    generate-line-indexes($y: 9, $color-indexes: 3 3 2 2 3);
+}
+
+.part-22::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 3 3 3 4 4 6 3 7 1),
+    generate-line-indexes($y: 1, $color-indexes: 7 7 3 3 3 3 3 6 7 2),
+    generate-line-indexes($y: 2, $color-indexes: 1 1 7 6 6 3 3 7 1 2),
+    generate-line-indexes($y: 3, $color-indexes: 1 1 1 7 7 7 7 1 2 2),
+    generate-line-indexes($y: 4, $color-indexes: 1 1 1 1 1 1 2 2 2 1),
+    generate-line-indexes($y: 5, $color-indexes: 1 1 1 1 2 2 2 1 1 2),
+    generate-line-indexes($y: 6, $color-indexes: 1 1 2 2 2 1 1 1 1 2),
+    generate-line-indexes($y: 7, $color-indexes: 1 2 2 1 1 1 1 1 2 2),
+    generate-line-indexes($y: 8, $color-indexes: 2 2 1 1 1 1 1 1 2 2),
+    generate-line-indexes($y: 9, $color-indexes: 1 1 1 1 1 1 1 1 1 2);
+}
+
+.part-23::before {
+  background: get-color(2);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 2 1 2 2 2 1 1 1 7 2),
+    generate-line-indexes($y: 1, $color-indexes: 2 1 2 1 2 1 1 1 1 2),
+    generate-line-indexes($y: 2, $color-indexes: 1 2 2 2 2 1 1 1 2 2),
+    generate-line-indexes($y: 3, $color-indexes: 2 2 2 2 1 1 1 2 1 1),
+    generate-line-indexes($y: 4, $color-indexes: 2 2 2 2 1 1 1 2 2 1),
+    generate-line-indexes($y: 5, $color-indexes: 2 2 1 1 2 1 1 1 2 1),
+    generate-line-indexes($y: 6, $color-indexes: 2 1 1 1 2 1 1 1 2 2),
+    generate-line-indexes($y: 7, $color-indexes: 2 1 1 1 2 2 2 1 1 2),
+    generate-line-indexes($y: 8, $color-indexes: 2 1 1 1 1 1 2 2 1 1),
+    generate-line-indexes($y: 9, $color-indexes: 2 1 1 1 1 1 1 2 2 1);
+}
+
+.part-24::before {
+  background: get-color(1);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 1 7 3 3 3 3 7 1 1 1),
+    generate-line-indexes($y: 1, $color-indexes: 1 1 7 3 7 7 1 3 3 2),
+    generate-line-indexes($y: 2, $color-indexes: 1 1 1 7 1 1 4 3 3 2),
+    generate-line-indexes($y: 3, $color-indexes: 1 1 1 1 7 3 7 4 3 3),
+    generate-line-indexes($y: 4, $color-indexes: 1 1 1 1 7 3 2 7 7 4),
+    generate-line-indexes($y: 5, $color-indexes: 1 1 1 1 7 3 2 2 1 1),
+    generate-line-indexes($y: 6, $color-indexes: 1 1 1 1 7 3 3 3 3 3),
+    generate-line-indexes($y: 7, $color-indexes: 2 1 1 1 7 2 2 2 3 3),
+    generate-line-indexes($y: 8, $color-indexes: 2 1 1 1 2 2 2 2 2 7),
+    generate-line-indexes($y: 9, $color-indexes: 2 2 1 2 2 2 2 2 7 1);
+}
+
+.part-25::before {
+  background: get-color(7);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 7 7 7 1 1 2 4 2 4 4),
+    generate-line-indexes($y: 1, $color-indexes: 1 1 1 2 2 2 4 2 4 3),
+    generate-line-indexes($y: 2, $color-indexes: 2 2 2 2 2 2 3 2 3 3),
+    generate-line-indexes($y: 3, $color-indexes: 2 2 2 2 2 2 4 7 7 7),
+    generate-line-indexes($y: 4, $color-indexes: 4 2 2 2 2 4 4 3 3 3),
+    generate-line-indexes($y: 5, $color-indexes: 7 7 3 3 3 4 4 4 3 3),
+    generate-line-indexes($y: 6, $color-indexes: 3 4 3 3 3 4 2 2 7 7),
+    generate-line-indexes($y: 7, $color-indexes: 7 4 4 1 3 2 3 3 2 7),
+    generate-line-indexes($y: 8, $color-indexes: 1 1 4 4 1 2 3 3 2 7),
+    generate-line-indexes($y: 9, $color-indexes: 1 1 1 4 4 1 3 3 2 2);
+}
+
+.part-26::before {
+  background: get-color(4);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 4 3 3 2 2 1 1 2 3 2),
+    generate-line-indexes($y: 1, $color-indexes: 3 3 2 2 1 3 2 6 2 2),
+    generate-line-indexes($y: 2, $color-indexes: 2 2 1 1 3 2 2 2 2 2),
+    generate-line-indexes($y: 3, $color-indexes: 2 2 2 2 2 2 2 1 1 2),
+    generate-line-indexes($y: 4, $color-indexes: 7 4 4 4 3 3 3 3 1 1),
+    generate-line-indexes($y: 5, $color-indexes: 7 6 6 6 6 4 4 4 1 1),
+    generate-line-indexes($y: 6, $color-indexes: 4 2 2 2 6 6 3 3 3 3),
+    generate-line-indexes($y: 7, $color-indexes: 4 4 2 2 2 6 6 6 4 4),
+    generate-line-indexes($y: 8, $color-indexes: 7 4 1 2 2 2 2 6 6 3),
+    generate-line-indexes($y: 9, $color-indexes: 7 4 1 1 2 2 2 2 6 6);
+}
+
+.part-27::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 2 2 3 3 2 2 6 3 2),
+    generate-line-indexes($y: 1, $color-indexes: 3 2 3 6 2 3 6 3 2 2),
+    generate-line-indexes($y: 2, $color-indexes: 2 2 6 2 2 6 2 2 2 6),
+    generate-line-indexes($y: 3, $color-indexes: 2 2 1 1 2 3 2 1 6 3),
+    generate-line-indexes($y: 4, $color-indexes: 1 1 1 1 1 1 1 1 1 1),
+    generate-line-indexes($y: 5, $color-indexes: 1 1 3 6 1 1 1 6 1 1),
+    generate-line-indexes($y: 6, $color-indexes: 6 3 6 4 4 3 6 7 7 7),
+    generate-line-indexes($y: 7, $color-indexes: 4 7 4 7 3 7 7 7 2 2),
+    generate-line-indexes($y: 8, $color-indexes: 3 3 3 7 7 7 2 2 2 2),
+    generate-line-indexes($y: 9, $color-indexes: 4 4 3 3 3 2 2 2 2 2);
+}
+
+.part-28::before {
+  background: get-color(3);
+
+  box-shadow: generate-line-indexes($y: 0, $color-indexes: 3 2 2 3 3),
+    generate-line-indexes($y: 1, $color-indexes: 6 2 2 2 2),
+    generate-line-indexes($y: 2, $color-indexes: 3 2 2 2 2),
+    generate-line-indexes($y: 3, $color-indexes: 3 2 1 2 2),
+    generate-line-indexes($y: 4, $color-indexes: 1 1 1 1 1),
+    generate-line-indexes($y: 5, $color-indexes: 1 1 6 1 1),
+    generate-line-indexes($y: 6, $color-indexes: 3 6 4 6 3),
+    generate-line-indexes($y: 7, $color-indexes: 2 7 7 3 7),
+    generate-line-indexes($y: 8, $color-indexes: 2 2 1 1 1),
+    generate-line-indexes($y: 9, $color-indexes: 2 1 1 1 1);
+}

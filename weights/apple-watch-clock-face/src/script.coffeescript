@@ -1,0 +1,22 @@
+# JS is only used to get the current time.
+# The needles are rotated when the page loads, the CSS does the rest to animate.
+
+d = new Date
+h = d.getHours()
+m = d.getMinutes()
+s = d.getSeconds()
+ct = (v) ->
+  t = v * 360 / 60
+  t
+ctm = (v) ->
+  t = v * 360 / 60 + 6 * ct(s) / 360 # 1min = 6 deg
+  t
+cth = (v) ->
+  t = v * 360 / 12 + 30 * ct(m) / 360 # 1h = 30 deg
+  t
+setTime = ->
+  $('.w-sec').css 'transform', 'rotateZ(' + ct(s) + 'deg)'
+  $('.w-min').css 'transform', 'rotateZ(' + ctm(m) + 'deg)'
+  $('.w-hour').css 'transform', 'rotateZ(' + cth(h) + 'deg)'
+$(document).ready ->
+  setTime()
