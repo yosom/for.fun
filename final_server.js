@@ -11,17 +11,6 @@ const screenshotService = new ScreenshotService();
 
 const PORT = 3001;
 
-// API配置
-const DOT_API_CONFIG = {
-    hostname: 'dot.mindreset.tech',
-    path: '/api/open/image',
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer dot_app_OvXxrKtwTIGRnKQAWGoUDjDLlXwZgDYKgFDygTTxPtwVKLMeEqsAoitOYkQvyPxv'
-    }
-};
-
 // MIME类型映射
 const mimeTypes = {
     '.html': 'text/html',
@@ -151,7 +140,7 @@ const server = http.createServer((req, res) => {
         req.on('end', () => {
             try {
                 const requestData = JSON.parse(body);
-                const { projectName, deviceId, imageData } = requestData;
+                const { projectName, deviceId, imageData, apiConfig } = requestData;
 
                 // 使用HTML渲染器处理图像数据
                 const renderer = new HTMLRenderer();
@@ -168,13 +157,24 @@ const server = http.createServer((req, res) => {
                     return;
                 }
 
+                // 构建Dot API配置
+                const dotApiConfig = {
+                    hostname: apiConfig.apiHost,
+                    path: apiConfig.apiPath,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiConfig.apiToken}`
+                    }
+                };
+
                 // 发送到Dot API
                 const dotRequestData = {
                     deviceId: deviceId,
                     image: base64Data
                 };
 
-                const dotRequest = https.request(DOT_API_CONFIG, (dotResponse) => {
+                const dotRequest = https.request(dotApiConfig, (dotResponse) => {
                     let responseData = '';
 
                     dotResponse.on('data', chunk => {

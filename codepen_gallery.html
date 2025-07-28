@@ -43,6 +43,134 @@
             opacity: 0.9;
         }
 
+        .config-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .config-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .config-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .config-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .config-content h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .config-group {
+            margin-bottom: 20px;
+        }
+
+        .config-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .config-group input, .config-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .config-group input:focus, .config-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .config-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .config-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .config-btn.primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .config-btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .config-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .config-status {
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .config-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .config-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -253,6 +381,9 @@
 
 <body>
     <div class="container">
+        <!-- 配置按钮 -->
+        <button class="config-button" onclick="openConfig()">⚙️ 设备配置</button>
+        
         <div class="header">
             <h1>🎨 Dot设备预览</h1>
         </div>
@@ -269,11 +400,124 @@
         <div id="statusMessage"></div>
     </div>
 
+    <!-- 配置模态框 -->
+    <div id="configModal" class="config-modal">
+        <div class="config-content">
+            <h2>⚙️ 设备配置</h2>
+            
+            <div class="config-group">
+                <label for="apiHost">API 主机地址:</label>
+                <input type="text" id="apiHost" placeholder="例如: dot.mindreset.tech">
+            </div>
+            
+            <div class="config-group">
+                <label for="apiPath">API 路径:</label>
+                <input type="text" id="apiPath" placeholder="例如: /api/open/image">
+            </div>
+            
+            <div class="config-group">
+                <label for="apiToken">API Token:</label>
+                <input type="password" id="apiToken" placeholder="输入您的API Token">
+            </div>
+            
+            <div class="config-group">
+                <label for="deviceId">设备 ID:</label>
+                <input type="text" id="deviceId" placeholder="输入您的设备ID">
+            </div>
+            
+            <div class="config-group">
+                <label for="serverPort">服务器端口:</label>
+                <input type="number" id="serverPort" placeholder="3001" min="1" max="65535">
+            </div>
+            
+            <div class="config-buttons">
+                <button class="config-btn secondary" onclick="closeConfig()">取消</button>
+                <button class="config-btn primary" onclick="saveConfig()">保存配置</button>
+            </div>
+            
+            <div id="configStatus" class="config-status" style="display: none;"></div>
+        </div>
+    </div>
+
     <script>
         // 全局变量
         let projects = [];
         const statusBar = document.getElementById('statusBar');
         const statusMessage = document.getElementById('statusMessage');
+
+        // 默认配置
+        const defaultConfig = {
+            apiHost: 'dot.mindreset.tech',
+            apiPath: '/api/open/image',
+            apiToken: '',
+            deviceId: '',
+            serverPort: 3001
+        };
+
+        // 配置管理
+        function loadConfig() {
+            const savedConfig = localStorage.getItem('dotDeviceConfig');
+            if (savedConfig) {
+                return JSON.parse(savedConfig);
+            }
+            return defaultConfig;
+        }
+
+        function saveConfigToStorage(config) {
+            localStorage.setItem('dotDeviceConfig', JSON.stringify(config));
+        }
+
+        function openConfig() {
+            const config = loadConfig();
+            document.getElementById('apiHost').value = config.apiHost;
+            document.getElementById('apiPath').value = config.apiPath;
+            document.getElementById('apiToken').value = config.apiToken;
+            document.getElementById('deviceId').value = config.deviceId;
+            document.getElementById('serverPort').value = config.serverPort;
+            document.getElementById('configModal').style.display = 'block';
+        }
+
+        function closeConfig() {
+            document.getElementById('configModal').style.display = 'none';
+            document.getElementById('configStatus').style.display = 'none';
+        }
+
+        function saveConfig() {
+            const config = {
+                apiHost: document.getElementById('apiHost').value.trim(),
+                apiPath: document.getElementById('apiPath').value.trim(),
+                apiToken: document.getElementById('apiToken').value.trim(),
+                deviceId: document.getElementById('deviceId').value.trim(),
+                serverPort: parseInt(document.getElementById('serverPort').value) || 3001
+            };
+
+            // 验证必填字段
+            if (!config.apiHost || !config.apiPath || !config.apiToken || !config.deviceId) {
+                showConfigStatus('请填写所有必填字段', 'error');
+                return;
+            }
+
+            saveConfigToStorage(config);
+            showConfigStatus('配置保存成功！', 'success');
+            
+            setTimeout(() => {
+                closeConfig();
+            }, 1500);
+        }
+
+        function showConfigStatus(message, type) {
+            const statusDiv = document.getElementById('configStatus');
+            statusDiv.textContent = message;
+            statusDiv.className = `config-status ${type}`;
+            statusDiv.style.display = 'block';
+        }
+
+        // 点击模态框外部关闭
+        document.getElementById('configModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConfig();
+            }
+        });
 
         // 显示状态信息
         function showStatus(message, type = 'info') {

@@ -526,6 +526,13 @@ class HTMLRenderer {
                 return;
             }
             
+            // 获取配置
+            const config = JSON.parse(localStorage.getItem('dotDeviceConfig') || '{}');
+            if (!config.deviceId || !config.apiToken) {
+                status.textContent = '⚠️ 请先在主页配置设备信息';
+                return;
+            }
+            
             status.textContent = '📤 正在发送灰度图像到墨水屏设备...';
             
             try {
@@ -536,8 +543,13 @@ class HTMLRenderer {
                     },
                     body: JSON.stringify({
                         projectName: '${projectName}',
-                        deviceId: '9C9E6E3B70F4',
-                        imageData: grayscaleImageData
+                        deviceId: config.deviceId,
+                        imageData: grayscaleImageData,
+                        apiConfig: {
+                            apiHost: config.apiHost,
+                            apiPath: config.apiPath,
+                            apiToken: config.apiToken
+                        }
                     })
                 });
 
@@ -564,6 +576,13 @@ class HTMLRenderer {
                 return;
             }
             
+            // 获取配置
+            const config = JSON.parse(localStorage.getItem('dotDeviceConfig') || '{}');
+            if (!config.deviceId || !config.apiToken) {
+                status.textContent = '⚠️ 请先在主页配置设备信息';
+                return;
+            }
+            
             status.textContent = '📤 正在发送原始图像到墨水屏设备...';
             
             try {
@@ -574,8 +593,13 @@ class HTMLRenderer {
                     },
                     body: JSON.stringify({
                         projectName: '${projectName}',
-                        deviceId: '9C9E6E3B70F4',
-                        imageData: capturedImageData
+                        deviceId: config.deviceId,
+                        imageData: capturedImageData,
+                        apiConfig: {
+                            apiHost: config.apiHost,
+                            apiPath: config.apiPath,
+                            apiToken: config.apiToken
+                        }
                     })
                 });
 

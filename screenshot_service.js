@@ -63,7 +63,7 @@ class ScreenshotService {
             // 目标尺寸（墨水屏尺寸）
             const targetWidth = 296;
             const targetHeight = 152;
-            
+
             // 计算放大后的视口尺寸
             const scaledWidth = targetWidth * scaleFactor;
             const scaledHeight = targetHeight * scaleFactor;
@@ -102,14 +102,14 @@ class ScreenshotService {
 
         } catch (error) {
             console.error('截图失败:', error);
-            
+
             // 如果是连接错误，尝试重新初始化浏览器并重试一次
             if (error.message.includes('Connection closed') || error.message.includes('Protocol error')) {
                 console.log('🔄 检测到连接错误，尝试重新初始化并重试...');
                 await page.close();
                 await this.close();
                 await this.initialize();
-                
+
                 // 重试一次
                 try {
                     const retryPage = await this.browser.newPage();
@@ -119,32 +119,32 @@ class ScreenshotService {
                         deviceScaleFactor: 1
                     });
                     await retryPage.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-                    
+
                     const projectUrl = `${baseUrl}/api/project-iframe/${projectName}`;
                     await retryPage.goto(projectUrl, {
                         waitUntil: 'networkidle2',
                         timeout: 10000
                     });
-                    
+
                     await new Promise(resolve => setTimeout(resolve, 2000));
-                    
+
                     const screenshot = await retryPage.screenshot({
                         type: 'png',
                         fullPage: false,
                         omitBackground: false
                     });
-                    
+
                     const resizedScreenshot = await this.resizeImage(screenshot, targetWidth, targetHeight);
                     await retryPage.close();
                     return resizedScreenshot;
-                    
+
                 } catch (retryError) {
                     console.error('重试失败:', retryError);
                     await retryPage.close();
                     throw retryError;
                 }
             }
-            
+
             throw error;
         } finally {
             if (page && !page.isClosed()) {
@@ -157,24 +157,24 @@ class ScreenshotService {
     async resizeImage(imageBuffer, targetWidth, targetHeight) {
         try {
             const { createCanvas, loadImage } = require('canvas');
-            
+
             // 加载图像
             const image = await loadImage(imageBuffer);
-            
+
             // 创建目标尺寸的canvas
             const canvas = createCanvas(targetWidth, targetHeight);
             const ctx = canvas.getContext('2d');
-            
+
             // 使用高质量缩放
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = 'high';
-            
+
             // 绘制缩放后的图像
             ctx.drawImage(image, 0, 0, targetWidth, targetHeight);
-            
+
             // 返回Buffer
             return canvas.toBuffer('image/png');
-            
+
         } catch (error) {
             console.error('图像缩放失败:', error);
             // 如果缩放失败，返回原始图像
